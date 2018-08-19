@@ -1,0 +1,17 @@
+configuration {
+	font: "Source Sans Pro 11";
+	width: 40;
+	location: 0;
+	yoffset: -200;
+	modi: "combi,drun,window";
+	combi-modi: "drun,window";
+	kb-cancel: "grave";
+	kb-toggle-case-sensitivity: "Alt+Shift+9";
+	lines: 8;
+	theme: "hypercube.rasi";
+	display-ssh: "";
+    display-drun: "";
+    display-window: "";
+    display-combi: "";
+    show-icons: true;
+}

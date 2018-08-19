@@ -1,0 +1,52 @@
+conky.config = {
+alignment= 'top_right',
+background= true,
+border_inner_margin= 20,
+border_width= 0,
+color1 = '00BCD4',
+color2 = '009688',
+color3 = 'e91e63',
+cpu_avg_samples = 2,
+default_color= 'FFFFFF',
+default_shade_color= '111111',
+default_outline_color= 'black',
+double_buffer= true,
+draw_borders= false,
+draw_graph_borders= false,
+font= 'Noto:size=12',
+gap_x= 125,
+gap_y= 25,
+imlib_cache_size = 0,
+minimum_width= 260,
+minimum_height= 743,
+net_avg_samples = 2,
+no_buffers= false,
+own_window= true,
+own_window_colour= '2d2d30',
+own_window_hints= 'undecorated,below,sticky,skip_taskbar,skip_pager',
+own_window_type= 'override',
+short_units= true,
+text_buffer_size= 2048,
+update_interval= 1,
+update_interval_on_battery= 2,
+use_xft= true,
+uppercase= false,
+}
+
+conky.text = [[
+${voffset 30}${color1}${alignr}${font Noto:style=Medium:size=30}${time %I:%M %p}${font}
+${font Noto:style=Medium:size=10}${alignr}${time %A, %d %B, %Y}
+${voffset 5}${alignr}It's ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ VANP cloud_cover} and ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ VANP temperature}°C outside
+${alignr}Wind flow is ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ VANP wind_speed} km/h ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ VANP wind_dir}${font}
+${voffset 15}${color2}${cpugraph cpu1 25,61} ${cpugraph cpu2 25,61} ${cpugraph cpu3 25,61} ${cpugraph cpu4 25,61}
+${color3}${font Material Design Icons:size=15}${font} ${voffset -2}${font Noto:size=10}${color1}CPU${alignr}${color1}${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%${font}
+${color3}${font Material Design Icons:size=15}${font} ${voffset -3}${font Noto:size=10}${color1}Fan${alignr}${color1}${exec sensors | grep "Processor Fan:" | cut -c 15- | xargs}${font}
+${color3}${font Material Design Icons:size=15}${font} ${voffset -3}${font Noto:size=10}${color1}Memory${alignr}${color1}${mem}/${memeasyfree}${font}
+${color3}${voffset 5}${font Material Design Icons:size=15}${font} ${font Noto:size=9}${voffset -3}${color1}/${alignr}${voffset -5}${color1}${fs_used /}/${fs_size /}${font}
+${voffset -7}${alignr}${color2}${fs_bar 5,150 /}
+${color3}${voffset 5}${font Material Design Icons:size=15}${font} ${font Noto:size=9}${voffset -3}${color1}/home${alignr}${voffset -5}${color1}${fs_used /home}/${fs_size /home}${font}
+${voffset -7}${alignr}${color2}${fs_bar 5,150 /home}
+${voffset -7}${color2}${hr}
+${color3}${voffset 5}${font Material Design Icons:size=15}${font} ${voffset -2}${font Noto:size=10}${color1}TODO${alignr}${color1}${exec todo | wc -l} ${font}
+${voffset 3}${color2}${font Noto:size=9}${exec todo | fold -s -w 45}${font} 
+]]

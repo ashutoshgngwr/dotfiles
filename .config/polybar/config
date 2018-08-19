@@ -1,0 +1,222 @@
+[settings]
+screenchange-reload = true
+
+[colors]
+background = #2d2d30
+foreground = #eceff1
+primary = #00BCD4
+secondary = #009688
+alert = #e91e63
+
+[bar/main]
+monitor = ${env:MONITOR:}
+
+modules-left = workspaces active-window
+modules-center = clock
+modules-right = ethernet wifi todo cpu-core-temp cpu memory battery pulseaudio powermenu 
+
+tray-position = right
+tray-padding = 2
+tray-transparent = false
+tray-background = ${colors.background}
+
+width = 100%
+height = 25
+fixed-center = true
+line-size = 0
+background = ${colors.background}
+foreground = ${colors.foreground}
+module-margin = 1
+
+font-0 = Noto Sans:pixelsize=10;1
+font-1 = Material Design Icons:size=13;2
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 100
+poll-interval = 5
+
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+format-full = <label-full>
+
+ramp-capacity-font = 1
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.alert}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.primary}
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+
+animation-charging-framerate = 400
+
+
+[module/workspaces]
+type = internal/i3
+fuzzy-match = true
+index-sort = true
+pin-workspaces = false
+
+ws-icon-0 = terminal;
+ws-icon-1 = code-sublime;
+ws-icon-2 = code-eclipse;
+ws-icon-3 = code-android-studio;
+ws-icon-4 = web;
+ws-icon-5 = files;
+ws-icon-6 = media;
+ws-icon-7 = chats;
+ws-icon-8 = steam;
+ws-icon-default = 
+
+label-font = 1
+
+label-focused = %icon%
+label-focused-padding = 2
+label-focused-margin = 0.5
+label-focused-background = ${colors.primary}
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+label-unfocused-margin = 0.5
+
+label-visible = %icon%
+label-visible-padding = 2
+label-visible-margin = 0.5
+
+label-urgent = %icon%
+label-urgent-padding = 2
+label-urgent-margin = 0.5
+label-urgent-background = ${colors.alert}
+
+[module/clock]
+type = internal/date
+interval = 2
+format = <label>
+label = %date%
+label-font = 0
+label-padding = 1
+date = %I:%M %p
+date-alt = %a %d %b, %I:%M %p
+
+[module/cpu-core-temp]
+type = custom/script
+exec = sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' | tr "\\n" " " | sed 's/ /°C  /g' | sed 's/  $//'
+interval = 5
+label = %output%
+label-font = 0
+format = <label>
+
+[module/powermenu]
+type = custom/menu
+
+label-open = 
+label-close = 
+label-close-foreground = ${colors.primary}
+menu-0-0-foreground = ${colors.secondary}
+menu-0-0 = 
+menu-0-0-exec = poweroff
+menu-0-1-foreground = ${colors.secondary}
+menu-0-1 = 
+menu-0-1-exec = reboot
+menu-0-2-foreground = ${colors.secondary}
+menu-0-2 = 賈
+menu-0-2-exec = systemctl suspend
+menu-0-3-foreground = ${colors.secondary}
+menu-0-3 = 
+menu-0-3-exec = i3-msg exit
+menu-0-4-foreground = ${colors.secondary}
+menu-0-4 = 
+menu-0-4-exec = .local/bin/lock.sh
+menu-0-0-padding = 1
+menu-0-1-padding = 1
+menu-0-2-padding = 1
+menu-0-3-padding = 1
+
+[module/active-window]
+type = internal/xwindow
+format = <label>
+format-foreground = ${colors.secondary}
+label = %title%
+label-font = 0
+label-maxlen = 50
+
+[module/memory]
+type = internal/memory
+interval = 10
+format =  <label>
+label = %percentage_used%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+label =  %percentage%%
+
+[module/network-abs]
+type = internal/network
+
+interval = 1
+ping-interval = 0
+
+accumulate-stats = true
+
+unknown-as-up = true
+format-connected = <label-connected>
+format-disconnected = 
+format-packetloss = 
+
+label-connected =  %downspeed:6%
+label-connected-padding-right = 1
+
+[module/ethernet]
+inherit = module/network-abs
+interface = enp7s0
+
+[module/wifi]
+inherit = module/network-abs
+interface = wlp6s0
+
+[module/todo]
+type = custom/script
+exec = todo | wc -l
+interval = 2
+format =  <label>
+label-padding = 0
+label = %output%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = 
+use-ui-max = false
+interval = 3
+format-volume = <ramp-volume>
+
+
+label-muted = 
+label-muted-foreground = #666
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 

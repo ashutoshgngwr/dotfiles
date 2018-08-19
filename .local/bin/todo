@@ -1,0 +1,86 @@
+#!/bin/sh
+
+#################################################################
+# todo: A script to maintain a simple todo list.
+#
+# Usage: todo [-d [task_id1] [task_id2] ... | task]
+#
+#    Add task: $ todo "something..."
+#    Show TODO tasks: $ todo
+#    Show DONE tasks: $ todo -d
+#    Mark task as DONE: $ todo -d task_id
+#    -- Task ID is printed when tasks are added/listed --
+#################################################################
+
+find_in_arr() # search first arg in array passed as second arg
+{
+    for i in ${@:2}
+    do
+        [ "$i" == "$1" ] && return 1
+    done
+    return 0
+}
+
+BASE_PATH=$HOME/.config/TODO # base dir path
+TODO_TXT=$BASE_PATH/TODO.txt # todo tasks
+DONE_TXT=$BASE_PATH/DONE.txt # dompleted tasks
+
+# suppress file not found warnings [create file if does not exist]
+cat /dev/null >> $TODO_TXT
+cat /dev/null >> $DONE_TXT
+
+if [ "$1" == "-d" ] # flag for completed tasks [done]
+then
+    if [ "$#" == "1" ] # print completed tasks if no further args given
+    then
+        echo "Archived List:"
+        while read -r DATE REST
+        do
+            echo "$DATE: $REST"
+        done < $DONE_TXT
+    else # mark given task IDs as done
+    	DATE=$(date +%Y-%m-%d)
+        cat /dev/null > $BASE_PATH/tmp
+        while read -r ID REST
+        do
+            find_in_arr $ID ${@:2} # find ID in input args
+            if [ "$?" == "1" ] # mark task as done if found
+            then
+                echo "$DATE: $REST" >> $DONE_TXT
+                echo "Done: $REST"
+            else # copy back to temp TODO
+                echo "$ID $REST" >> $BASE_PATH/tmp
+            fi
+        done < $TODO_TXT
+        mv $BASE_PATH/tmp $TODO_TXT # save changes to TODO_TXT
+    fi
+elif [ "$1" == "-h" ] # print help
+    then
+    echo "Usage: todo [-d [task_id1] [task_id2] ... | task]"
+    echo ""
+    echo "    Add task: todo \"something\""
+    echo "    Show TODO tasks: todo"
+    echo "    Show DONE tasks: todo -d"
+    echo "    Mark task as DONE: todo -d task_id"
+    echo ""
+    echo "    -- Task ID is printed when tasks are added/printed --"
+elif [ $# -gt 0 ] # add task to TODO list
+    then
+    # generate ID based on last task's ID
+    ID=1
+    while read -r TID REST
+    do
+        ID=$(($TID + 1))
+    done < $TODO_TXT
+
+    # append at the beginning of TODO_TXT
+    echo "$ID $@" >> $TODO_TXT
+
+    # echo result
+    echo "$ID. $@"
+else # print TODO list
+    while read -r ID REST
+    do
+        echo "• $REST ($ID)"
+    done < $TODO_TXT
+fi

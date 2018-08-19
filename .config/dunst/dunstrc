@@ -1,0 +1,51 @@
+[global]
+follow = mouse
+geometry = "350x10-0+50"
+indicate_hidden = yes
+shrink = no
+transparency = 00
+font = "Roboto 10"
+markup = yes
+format = "<b>%s %p</b>\n%b"
+sort = yes
+alignment = left
+show_age_threshold = -1
+word_wrap = yes
+ignore_newline = no
+idle_threshold = 120
+monitor = 0
+sticky_history = yes
+line_height = 0
+separator_height = 2
+padding = 10
+horizontal_padding = 20
+separator_color = "#585858"
+startup_notification = false
+icon_position = left
+max_icon_size = 150
+icon_path = /usr/share/icons/Papirus-Adapta-Nokto/16x16/apps/:/usr/share/icons/Papirus-Adapta-Nokto/16x16/devices/:/usr/share/icons/Papirus-Adapta-Nokto/16x16/status/
+frame_width = 0
+frame_color = "#383838"
+browser = google-chrome-stable
+corner_radius = 5
+
+[shortcuts]
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+grave
+context = ctrl+shift+period
+
+[urgency_low]
+background = "#2d2d30"
+foreground = "#009688"
+timeout = 5
+
+[urgency_normal]
+background = "#2d2d30"
+foreground = "#009688"
+timeout = 7
+
+[urgency_critical]
+background = "#2d2d30"
+foreground = "#e91e63"
+timeout = 0
