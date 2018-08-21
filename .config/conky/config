@@ -15,7 +15,7 @@ draw_borders= false,
 draw_graph_borders= false,
 font= 'Noto:size=12',
 gap_x= 125,
-gap_y= 25,
+gap_y= 46,
 imlib_cache_size = 0,
 minimum_width= 260,
 minimum_height= 743,
@@ -31,6 +31,7 @@ update_interval= 1,
 update_interval_on_battery= 2,
 use_xft= true,
 uppercase= false,
+ximerama_head = 0
 }
 
 conky.text = [[

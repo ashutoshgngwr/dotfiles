@@ -2,18 +2,19 @@
 screenchange-reload = true
 
 [colors]
-background = #2d2d30
-foreground = #eceff1
-primary = #00BCD4
-secondary = #009688
-alert = #e91e63
+background = #BA2D0B
+foreground = #CFDBD5
+primary = #F9DF68
+secondary = #B2DDFF
+disabled = #7D1128
+alert = #750101
 
 [bar/main]
 monitor = ${env:MONITOR:}
 
-modules-left = workspaces active-window
-modules-center = clock
-modules-right = ethernet wifi todo cpu-core-temp cpu memory battery pulseaudio powermenu 
+modules-left = workspaces clock
+modules-center = active-window
+modules-right = ethernet wifi todo battery powermenu pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -21,15 +22,15 @@ tray-transparent = false
 tray-background = ${colors.background}
 
 width = 100%
-height = 25
+height = 26
 fixed-center = true
 line-size = 0
 background = ${colors.background}
 foreground = ${colors.foreground}
 module-margin = 1
 
-font-0 = Noto Sans:pixelsize=10;1
-font-1 = Material Design Icons:size=13;2
+font-0 = Roboto:style=medium:pixelsize=10;2
+font-1 = Material Design Icons:size=13;3
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -96,6 +97,7 @@ label-focused = %icon%
 label-focused-padding = 2
 label-focused-margin = 0.5
 label-focused-background = ${colors.primary}
+label-focused-foreground = ${colors.background}
 
 label-unfocused = %icon%
 label-unfocused-padding = 2
@@ -120,33 +122,21 @@ label-padding = 1
 date = %I:%M %p
 date-alt = %a %d %b, %I:%M %p
 
-[module/cpu-core-temp]
-type = custom/script
-exec = sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' | tr "\\n" " " | sed 's/ /°C  /g' | sed 's/  $//'
-interval = 5
-label = %output%
-label-font = 0
-format = <label>
-
 [module/powermenu]
 type = custom/menu
 
 label-open = 
 label-close = 
-label-close-foreground = ${colors.primary}
-menu-0-0-foreground = ${colors.secondary}
+label-close-foreground = ${colors.foreground}
+menu-0-foreground = ${colors.foreground}
 menu-0-0 = 
 menu-0-0-exec = poweroff
-menu-0-1-foreground = ${colors.secondary}
 menu-0-1 = 
 menu-0-1-exec = reboot
-menu-0-2-foreground = ${colors.secondary}
 menu-0-2 = 賈
 menu-0-2-exec = systemctl suspend
-menu-0-3-foreground = ${colors.secondary}
 menu-0-3 = 
 menu-0-3-exec = i3-msg exit
-menu-0-4-foreground = ${colors.secondary}
 menu-0-4 = 
 menu-0-4-exec = .local/bin/lock.sh
 menu-0-0-padding = 1
@@ -158,21 +148,9 @@ menu-0-3-padding = 1
 type = internal/xwindow
 format = <label>
 format-foreground = ${colors.secondary}
-label = %title%
+label =  %title%
 label-font = 0
-label-maxlen = 50
-
-[module/memory]
-type = internal/memory
-interval = 10
-format =  <label>
-label = %percentage_used%%
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format = <label>
-label =  %percentage%%
+label-maxlen = 60
 
 [module/network-abs]
 type = internal/network
@@ -214,9 +192,8 @@ use-ui-max = false
 interval = 3
 format-volume = <ramp-volume>
 
-
 label-muted = 
-label-muted-foreground = #666
+label-muted-foreground = ${colors.disabled}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
