@@ -1,11 +1,11 @@
 * {
     transparent-background: rgba(0,0,0,0);
-    background: rgba(45,45,48,0.7);
+    background: rgba(0,10,0,0.7);
     selected-background: @secondary;
-    foreground: #eceff1;
-    primary: #009688;
-    secondary: #03a9f4;
-    alert: #e91e63;
+    foreground: #00CC00;
+    primary: #009900;
+    secondary: #004400;
+    alert: #00FF00;
 
     normal-foreground:           @foreground;
     normal-background:           @transparent-background;

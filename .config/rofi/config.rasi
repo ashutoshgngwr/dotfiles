@@ -12,6 +12,6 @@ configuration {
 	display-ssh: "";
     display-drun: "";
     display-window: "";
-    display-combi: "";
+    display-combi: "  ";
     show-icons: true;
 }
