@@ -16,14 +16,15 @@ set $mod Mod4
 font pango:Roboto 11
 
 set $w1    "1:terminal"
-set $w2    "2:code-sublime"
-set $w3    "3:code-eclipse"
-set $w4    "4:code-android-studio"
-set $w5    "5:web"
-set $w6    "6:files"
-set $w7    "7:media"
-set $w8    "8:chats"
-set $w9    "9:steam"
+set $w2    "2:code-visual-studio"
+set $w3    "3:code-intellij"
+set $w4    "4:web"
+set $w5    "5:files"
+set $w6    "6:document-editor"
+set $w7    "7:media-player"
+set $w8    "8:free"
+set $w9    "9:free"
+set $w10   "10:torrent"
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -36,7 +37,7 @@ set $w9    "9:steam"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -101,7 +102,7 @@ bindsym $mod+6 workspace $w6
 bindsym $mod+7 workspace $w7
 bindsym $mod+8 workspace $w8
 bindsym $mod+9 workspace $w9
-bindsym $mod+0 workspace number 10
+bindsym $mod+0 workspace $w10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $w1
@@ -113,7 +114,7 @@ bindsym $mod+Shift+6 move container to workspace $w6
 bindsym $mod+Shift+7 move container to workspace $w7
 bindsym $mod+Shift+8 move container to workspace $w8
 bindsym $mod+Shift+9 move container to workspace $w9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+0 move container to workspace $w10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -156,37 +157,41 @@ bindsym $mod+r mode "resize"
 default_border pixel 1
 default_floating_border none
 
-client.focused          #2B83A6 #2B83A6 #FFFFFF #DDDDDD   
-client.focused_inactive #212121 #212121 #86888C #292D2E   
-client.unfocused        #212121 #212121 #86888C #292D2E   
-client.urgent           #D64E4E #D64E4E #FFFFFF #D64E4E   
-client.placeholder      #212121 #0C0C0C #FFFFFF #212121   
-client.background       #212121
+client.focused          #003300 #003300 #003300 #003300
+client.focused_inactive #003300 #003300 #003300 #003300
+client.unfocused        #001a00 #001a00 #001a00 #001a00
+client.urgent           #006600 #006600 #006600 #006600
+client.placeholder      #001a00 #001a00 #001a00 #001a00
+client.background       #000000 #000000 #000000 #000000
 
-bindsym XF86AudioPrev	 	exec --no-startup-id playerctl previous
-bindsym XF86AudioNext	 	exec --no-startup-id playerctl next
-bindsym XF86AudioPlay	 	exec --no-startup-id playerctl play-pause
-bindsym XF86AudioMute	 	exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
+bindsym XF86AudioPrev		exec --no-startup-id playerctl previous
+bindsym XF86AudioNext		exec --no-startup-id playerctl next
+bindsym XF86AudioPlay		exec --no-startup-id playerctl play-pause
+bindsym XF86AudioMute		exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
 bindsym XF86AudioRaiseVolume	exec --no-startup-id amixer -q -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume	exec --no-startup-id amixer -q -D pulse sset Master 5%-
-bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 10
 bindsym $mod+Escape		exec --no-startup-id lock.sh
 
-bindsym Print			exec --no-startup-id .local/bin/screenshot.sh
+bindsym Print			exec --no-startup-id $HOME/.local/bin/screenshot.sh
 bindsym grave			exec --no-startup-id rofi -show combi
 
 # drop down terminal
-bindsym $mod+grave exec xfce4-terminal --drop-down
+bindsym Mod1+grave exec xfce4-terminal --drop-down
 
 #assign workspaces
 assign [window_role="^xfce4-terminal-[\d]+.*$"] $w1
-assign [instance="^Eclipse$"] $w3
-assign [class="^jetbrains-studio$"] $w4
-assign [instance="^sublime_text$"] $w2
-assign [instance="^google-chrome$"] $w5
-assign [instance="^pcmanfm$"] $w6
-assign [instance="^transmission-gtk$"] number 10
+assign [instance="^code$"] $w2
+assign [class="^jetbrains-idea-ce$"] $w3
+assign [class="^jetbrains-studio$"] $w3
+assign [class="^Google-chrome$"] $w4
+assign [instance="^pcmanfm$"] $w5
+assign [class="^gimp-2.10$"] $w6
+assign [class="^libreoffice$"] $w6
+assign [class="^TeXstudio$"] $w6
+assign [class="^vlc$"] $w8
+assign [instance="^transmission-gtk$"] $w10
 
 # float all pop-up windows
 for_window [window_role="pop-up"] floating enable
@@ -218,7 +223,7 @@ exec_always --no-startup-id compton &
 exec_always --no-startup-id feh --randomize --bg-fill .config/wallpapers/* .config/wallpapers/* &
 
 # polybar
-exec_always --no-startup-id .local/bin/polybar.sh &
+exec_always --no-startup-id polybar.sh
 
 # conky system monitor
 exec_always --no-startup-id conky -c .config/conky/config &
@@ -227,4 +232,4 @@ exec_always --no-startup-id conky -c .config/conky/config &
 exec_always --no-startup-id dex -a &
 
 # schedule auto lock
-exec_always --no-startup-id xautolock -time 5 -locker lock.sh &
+exec_always --no-startup-id xautolock -time 10 -locker lock.sh &
