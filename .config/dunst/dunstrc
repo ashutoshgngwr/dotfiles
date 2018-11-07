@@ -19,15 +19,13 @@ line_height = 0
 separator_height = 2
 padding = 10
 horizontal_padding = 20
-separator_color = "#585858"
+separator_color = "#006600"
 startup_notification = false
 icon_position = left
 max_icon_size = 150
 icon_path = /usr/share/icons/Papirus-Adapta-Nokto/16x16/apps/:/usr/share/icons/Papirus-Adapta-Nokto/16x16/devices/:/usr/share/icons/Papirus-Adapta-Nokto/16x16/status/
 frame_width = 0
-frame_color = "#383838"
-browser = google-chrome-stable
-corner_radius = 5
+frame_color = "#001100"
 
 [shortcuts]
 close = ctrl+space
@@ -36,16 +34,16 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-background = "#2d2d30"
-foreground = "#009688"
+background = "#001100"
+foreground = "#009900"
 timeout = 5
 
 [urgency_normal]
-background = "#2d2d30"
-foreground = "#009688"
+background = "#002200"
+foreground = "#00CC00"
 timeout = 7
 
 [urgency_critical]
-background = "#2d2d30"
-foreground = "#e91e63"
+background = "#003300"
+foreground = "#00FF00"
 timeout = 0
