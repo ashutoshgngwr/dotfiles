@@ -36,6 +36,7 @@ font-1 = FontAwesome:size=12;3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 cursor-click = pointer
+wm-restack = i3
 
 [module/battery]
 type = internal/battery
@@ -95,7 +96,6 @@ format =   <label>
 format-padding = 2
 label = %date%
 label-font = 0
-label-foreground = ${colors.secondary}
 date = %I:%M %p
 date-alt = %a %d %b '%y, %I:%M %p
 
@@ -123,12 +123,10 @@ menu-0-3-padding = 2
 
 [module/active-window]
 type = internal/xwindow
-format =   <label>
-format-foreground = ${colors.foreground}
-label = %title%
-label-foreground = ${colors.secondary}
+format = <label>
+label =   %title%
 label-font = 0
-label-maxlen = 50
+label-maxlen = 60
 
 [module/network-abs]
 type = internal/network
