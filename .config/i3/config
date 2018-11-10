@@ -190,6 +190,7 @@ assign [instance="^pcmanfm$"] $w5
 assign [class="^gimp-2.10$"] $w6
 assign [class="^libreoffice$"] $w6
 assign [class="^TeXstudio$"] $w6
+assign [class="^Gimp.*$"] $w6
 assign [class="^vlc$"] $w8
 assign [instance="^transmission-gtk$"] $w10
 
@@ -209,7 +210,6 @@ for_window [class="Nm-connection-editor"] move position center
 for_window [window_role="GtkFileChooserDialog"] resize set 720 560
 for_window [window_role="GtkFileChooserDialog"] move position center
 
-
 # turn on num lock
 exec_always --no-startup-id numlockx on
 
@@ -225,11 +225,11 @@ exec_always --no-startup-id feh --randomize --bg-fill .config/wallpapers/* .conf
 # polybar
 exec_always --no-startup-id polybar.sh
 
-# conky system monitor
-exec_always --no-startup-id conky -c .config/conky/config &
-
 # XDG autostart desktop enteries
 exec_always --no-startup-id dex -a &
 
 # schedule auto lock
 exec_always --no-startup-id xautolock -time 10 -locker lock.sh &
+
+# conky system monitor
+exec_always --no-startup-id conky -c .config/conky/config

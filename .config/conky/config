@@ -31,7 +31,7 @@ own_window_type="override",
 -- own_window_transparent=true,
 -- own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
 own_window_argb_visual=true,
-own_window_argb_value=150,
+own_window_argb_value=128,
 
 
 -------------------------------------
@@ -108,15 +108,15 @@ ${execi 300 ~/.config/conky/vision/get_weather ${template6} ${template7} ${templ
 \
 \
 \
-${font Roboto:weight=Light:size=96}${color0}\
-${alignc}${time %H:%M}\
+${font Roboto:weight=Light:size=80}${color0}\
+${alignc}${time %I:%M}\
 ${font}${color}
 \
 \
 \
 \
-${font Roboto:weight=Light:size=28}${color1}\
-${voffset 30}\
+${font Roboto:size=28}${color1}\
+${voffset 20}\
 ${alignc}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A, %B %d"}\
 ${font}${color}
 \
@@ -124,7 +124,7 @@ ${font}${color}
 \
 \
 ${font Roboto:size=12}${color2}\
-${voffset 36}\
+${voffset 70}\
 ${goto 60}${execi 300 jq .main.temp ~/.cache/conky-vision/weather.json | awk '{print int($1+0.5)}' # round num}°\
 ${font}${color}\
 \
