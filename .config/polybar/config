@@ -31,7 +31,7 @@ line-size = 0
 background = ${colors.background}
 foreground = ${colors.foreground}
 module-margin = 2
-font-0 = Roboto:style=medium:pixelsize=11;2
+font-0 = Droid Sans:pixelsize=11;3
 font-1 = FontAwesome:size=12;3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -115,7 +115,7 @@ menu-0-2-exec = systemctl suspend
 menu-0-3 = 
 menu-0-3-exec = i3-msg exit
 menu-0-4 = 
-menu-0-4-exec = $HOME/.local/bin/lock.sh
+menu-0-4-exec = dm-tool lock
 menu-0-0-padding = 2
 menu-0-1-padding = 2
 menu-0-2-padding = 2
