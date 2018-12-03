@@ -183,15 +183,11 @@ bindsym Mod1+grave exec xfce4-terminal --drop-down
 #assign workspaces
 assign [window_role="^xfce4-terminal-[\d]+.*$"] $w1
 assign [instance="^code$"] $w2
-assign [class="^jetbrains-idea-ce$"] $w3
-assign [class="^jetbrains-studio$"] $w3
+assign [class="^jetbrains-(idea-ce|studio)$"] $w3
 assign [class="^Google-chrome$"] $w4
 assign [instance="^pcmanfm$"] $w5
-assign [class="^gimp-2.10$"] $w6
-assign [class="^libreoffice$"] $w6
-assign [class="^TeXstudio$"] $w6
 assign [class="^Gimp.*$"] $w6
-assign [class="^vlc$"] $w8
+assign [class="^vlc$"] $w7
 assign [instance="^transmission-gtk$"] $w10
 
 # float all pop-up windows
@@ -214,22 +210,28 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 exec_always --no-startup-id numlockx on
 
 # polkit authorization agent
-exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # composite manager
-exec_always --no-startup-id compton &
+exec_always --no-startup-id compton
 
 # wallpaper 
-exec_always --no-startup-id feh --randomize --bg-fill .config/wallpapers/* .config/wallpapers/* &
+exec_always --no-startup-id feh --randomize --bg-fill .config/wallpapers/* .config/wallpapers/*
 
 # polybar
 exec_always --no-startup-id polybar.sh
 
 # XDG autostart desktop enteries
-exec_always --no-startup-id dex -a &
+exec_always --no-startup-id dex -a
 
 # schedule auto lock
-exec_always --no-startup-id xautolock -time 10 -locker "dm-tool lock" &
+exec_always --no-startup-id xautolock -time 10 -locker "dm-tool lock"
 
 # conky system monitor
 exec_always --no-startup-id conky -c .config/conky/config
+
+# WinXP sound needs some sound
+exec_always --no-startup-id amixer -q -D pulse sset Master 75%
+
+# WinXP startup sound (nostalgia)
+exec_always --no-startup-id canberra-gtk-play --file=$HOME/.local/share/startup.ogg
