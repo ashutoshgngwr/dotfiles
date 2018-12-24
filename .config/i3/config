@@ -224,14 +224,8 @@ exec_always --no-startup-id polybar.sh
 # XDG autostart desktop enteries
 exec_always --no-startup-id dex -a
 
-# schedule auto lock
-exec_always --no-startup-id xautolock -time 10 -locker "dm-tool lock"
-
 # conky system monitor
 exec_always --no-startup-id conky -c .config/conky/config
-
-# WinXP sound needs some sound
-exec_always --no-startup-id amixer -q -D pulse sset Master 75%
 
 # WinXP startup sound (nostalgia)
 exec_always --no-startup-id canberra-gtk-play --file=$HOME/.local/share/startup.ogg
