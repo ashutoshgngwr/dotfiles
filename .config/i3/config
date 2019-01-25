@@ -187,7 +187,7 @@ assign [class="^jetbrains-(idea-ce|studio)$"] $w3
 assign [class="^Google-chrome$"] $w4
 assign [instance="^pcmanfm$"] $w5
 assign [class="^Gimp.*$"] $w6
-assign [class="^vlc$"] $w7
+assign [class="^(vlc|Kaku)$"] $w7
 assign [instance="^transmission-gtk$"] $w10
 
 # float all pop-up windows
