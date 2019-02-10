@@ -175,7 +175,7 @@ bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 10
 bindsym $mod+Escape		exec --no-startup-id dm-tool lock
 
 bindsym Print			exec --no-startup-id $HOME/.local/bin/screenshot.sh
-bindsym grave			exec --no-startup-id rofi -show combi
+bindsym grave			exec --no-startup-id albert toggle
 
 # drop down terminal
 bindsym Mod1+grave exec xfce4-terminal --drop-down
