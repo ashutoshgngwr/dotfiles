@@ -98,6 +98,9 @@ source $ZSH/oh-my-zsh.sh
 # clear
 alias c="clear"
 
+# exit
+alias e="exit"
+
 # ls -al
 alias lsl="ls -al"
 
