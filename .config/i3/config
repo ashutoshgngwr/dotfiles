@@ -37,7 +37,7 @@ set $w10   "10:torrent"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -177,11 +177,8 @@ bindsym $mod+Escape		exec --no-startup-id dm-tool lock
 bindsym Print			exec --no-startup-id $HOME/.local/bin/screenshot.sh
 bindsym grave			exec --no-startup-id albert toggle
 
-# drop down terminal
-bindsym Mod1+grave exec xfce4-terminal --drop-down
-
 #assign workspaces
-assign [window_role="^xfce4-terminal-[\d]+.*$"] $w1
+assign [class="^Alacritty$"] $w1
 assign [instance="^code$"] $w2
 assign [class="^jetbrains-(idea-ce|studio)$"] $w3
 assign [class="^Google-chrome$"] $w4
@@ -226,4 +223,3 @@ exec_always --no-startup-id polybar.sh
 
 # XDG autostart desktop enteries
 exec_always --no-startup-id dex -a
-
