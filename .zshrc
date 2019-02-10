@@ -104,6 +104,9 @@ alias e="exit"
 # ls -al
 alias lsl="ls -al"
 
+# df -h (human readable disk stats)
+alias df="df -h"
+
 # git add
 alias ga="git add"
 
