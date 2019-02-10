@@ -227,6 +227,3 @@ exec_always --no-startup-id polybar.sh
 # XDG autostart desktop enteries
 exec_always --no-startup-id dex -a
 
-# conky system monitor
-exec_always --no-startup-id conky -c .config/conky/config
-
