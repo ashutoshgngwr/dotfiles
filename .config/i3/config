@@ -209,6 +209,9 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 # turn on num lock
 exec_always --no-startup-id numlockx on
 
+# Let's kill Mario. :D
+exec_always --no-startup-id paplay $HOME/.local/share/startup.wav
+
 # polkit authorization agent
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -227,5 +230,3 @@ exec_always --no-startup-id dex -a
 # conky system monitor
 exec_always --no-startup-id conky -c .config/conky/config
 
-# WinXP startup sound (nostalgia)
-exec_always --no-startup-id canberra-gtk-play --file=$HOME/.local/share/startup.ogg
