@@ -8,13 +8,13 @@ compositing-border = over
 psuedo-transparency = true
 
 [colors]
-background = #AA001100
-solid-background = #001100
-foreground = #00CC00
-primary = #006600
-secondary = #009900
-disabled = #003300
-alert = #00FF00
+background = #AA1E152A
+solid-background = #1E152A
+foreground = #DDDDDD
+primary = #99F7AB
+secondary = #30BCED
+disabled = #60695C
+alert = #FC5130
 
 [bar/main]
 monitor = ${env:MONITOR:}
