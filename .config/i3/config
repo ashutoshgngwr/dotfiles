@@ -37,7 +37,7 @@ set $w10   "10:torrent"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty -1
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -178,7 +178,7 @@ bindsym Print			exec --no-startup-id $HOME/.local/bin/screenshot.sh
 bindsym grave			exec --no-startup-id albert toggle
 
 #assign workspaces
-assign [class="^Alacritty$"] $w1
+assign [class="^kitty$"] $w1
 assign [instance="^code$"] $w2
 assign [class="^jetbrains-(idea-ce|studio)$"] $w3
 assign [class="^Google-chrome$"] $w4
