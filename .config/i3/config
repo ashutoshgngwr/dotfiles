@@ -223,3 +223,6 @@ exec_always --no-startup-id polybar.sh
 
 # XDG autostart desktop enteries
 exec_always --no-startup-id dex -a
+
+# touch pad gestures (libinput-gestures)
+exec_always --no-startup-id libinput-gestures-setup start
