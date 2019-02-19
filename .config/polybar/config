@@ -34,8 +34,6 @@ foreground = ${colors.foreground}
 module-margin = 2
 font-0 = Droid Sans:pixelsize=11;3
 font-1 = FontAwesome:size=12;3
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
 cursor-click = pointer
 wm-restack = i3
 
@@ -60,6 +58,7 @@ ramp-capacity-4 = 
 
 [module/workspaces]
 type = internal/i3
+enable-scroll = false
 fuzzy-match = true
 index-sort = true
 pin-workspaces = false
