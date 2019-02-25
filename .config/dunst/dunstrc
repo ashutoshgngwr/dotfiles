@@ -28,7 +28,7 @@
   show_indicators = yes
   icon_position = left
   max_icon_size = 32
-  icon_path = /usr/share/icons/Papirus/16x16/apps/:/usr/share/icons/Papirus/16x16/devices/:/usr/share/icons/Papirus/16x16/status/
+  icon_path = /usr/share/icons/la-capitaine/actions/22x22:/usr/share/icons/la-capitaine/apps/scalable:/usr/share/icons/la-capitaine/devices/scalable:/usr/share/icons/la-capitaine/status/scalable
   sticky_history = yes
   history_length = 20
   always_run_script = true
