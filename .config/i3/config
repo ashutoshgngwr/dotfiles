@@ -186,6 +186,8 @@ assign [instance="^pcmanfm$"] $w5
 assign [class="^Gimp.*$"] $w6
 assign [class="^(vlc|Kaku)$"] $w7
 assign [instance="^transmission-gtk$"] $w10
+# for weird reasons, spotify doesn't like being handled by assign.
+for_window [class="Spotify"] move to workspace $w7
 
 # float all pop-up windows
 for_window [window_role="pop-up"] floating enable
