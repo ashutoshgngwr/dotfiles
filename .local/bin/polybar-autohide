@@ -33,6 +33,11 @@ toggle() {
   fi
 }
 
+help() {
+  echo "$1: A script to enable, disable or toggle polybar autohide"
+  echo "Usage: $1 [enable|disable|toggle]"
+}
+
 case "$1" in
   enable)
     enable &
@@ -42,5 +47,12 @@ case "$1" in
     ;;
   toggle)
     toggle "$0"
+    ;;
+  help)
+    help "$0"
+    ;;
+  *)
+    help "$0"
+    exit 1
     ;;
 esac
