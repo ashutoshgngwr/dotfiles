@@ -18,6 +18,7 @@ alert = #FC5130
 
 [bar/main]
 monitor = ${env:MONITOR:}
+enable-ipc = true
 modules-left = clock active-window
 modules-center = workspaces
 modules-right = ethernet wifi battery powermenu pulseaudio

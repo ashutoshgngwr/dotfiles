@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+
+get_script_pid() {
+  echo $(ps -aux | grep -E "polybar-autohide enable" | grep -v "grep" | awk '{ print $2 }')
+}
+
+enable() {
+  while [ true ]; do
+    POS_Y=$(xdotool getmouselocation | grep -oE "y:([0-9]+)" | grep -oE "([0-9]+)")
+    if [ "$POS_Y" -lt "25" ]; then
+      polybar-msg cmd show > /dev/null 2>&1
+    else
+      polybar-msg cmd hide > /dev/null 2>&1
+    fi
+    sleep 1s
+  done
+}
+
+disable() {
+  PID=$(get_script_pid)
+  if [ ! -z "$PID" ]; then
+    kill "$PID"
+    polybar-msg cmd show > /dev/null 2>&1
+  fi
+}
+
+toggle() {
+  PID=$(get_script_pid)
+  if [ -z "$PID" ]; then
+    sh -c "$1 enable"
+  else
+    disable
+  fi
+}
+
+case "$1" in
+  enable)
+    enable &
+    ;;
+  disable)
+    disable
+    ;;
+  toggle)
+    toggle "$0"
+    ;;
+esac
