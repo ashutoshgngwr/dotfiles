@@ -1,35 +1,51 @@
 #!/usr/bin/env sh
 
 get_script_pid() {
-  echo $(ps -aux | grep -E "polybar-autohide enable" | grep -v "grep" | awk '{ print $2 }')
+  echo $(ps -aux | grep "$1 enable" | grep -v "grep" | awk '{ print $2 }')
 }
 
-enable() {
+autohide_watchdog() {
+  IS_VISIBLE="false"
   while [ true ]; do
     POS_Y=$(xdotool getmouselocation | grep -oE "y:([0-9]+)" | grep -oE "([0-9]+)")
-    if [ "$POS_Y" -lt "25" ]; then
+    if [ "$POS_Y" -lt "10" ] && [ "$IS_VISIBLE" == "false" ]; then
       polybar-msg cmd show > /dev/null 2>&1
-    else
+      IS_VISIBLE="true"
+    elif [ "$POS_Y" -gt "27" ]; then
       polybar-msg cmd hide > /dev/null 2>&1
+      IS_VISIBLE="false"
     fi
     sleep 1s
   done
 }
 
+enable() {
+  PID=$(get_script_pid "$1" | awk '{ print $1 }')
+  if [ ! -z "$PID" ] && [ "${PID}" -ne "$$" ]; then
+    echo "$1 is already enabled"
+  else
+    autohide_watchdog &
+    echo "$1 is enabled"
+  fi
+}
+
 disable() {
-  PID=$(get_script_pid)
+  PID=$(get_script_pid "$1")
   if [ ! -z "$PID" ]; then
     kill "$PID"
     polybar-msg cmd show > /dev/null 2>&1
+    echo "$1 is disabled"
+  else
+    echo "$1 is not enabled"
   fi
 }
 
 toggle() {
-  PID=$(get_script_pid)
+  PID=$(get_script_pid "$1")
   if [ -z "$PID" ]; then
     sh -c "$1 enable"
   else
-    disable
+    disable "$1"
   fi
 }
 
@@ -40,10 +56,10 @@ help() {
 
 case "$1" in
   enable)
-    enable &
+    enable "$0"
     ;;
   disable)
-    disable
+    disable "$0"
     ;;
   toggle)
     toggle "$0"
