@@ -229,3 +229,6 @@ exec_always --no-startup-id dex -a
 
 # touch pad gestures (libinput-gestures)
 exec_always --no-startup-id libinput-gestures-setup start
+
+# enable polybar autohide
+exec_always --no-startup-id polybar-autohide enable
