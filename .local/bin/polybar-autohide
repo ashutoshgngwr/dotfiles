@@ -5,15 +5,15 @@ get_script_pid() {
 }
 
 autohide_watchdog() {
-  IS_VISIBLE="false"
+  IS_VISIBLE="true"
   while [ true ]; do
     POS_Y=$(xdotool getmouselocation | grep -oE "y:([0-9]+)" | grep -oE "([0-9]+)")
-    if [ "$POS_Y" -lt "5" ] && [ "$IS_VISIBLE" == "false" ]; then
-      polybar-msg cmd show > /dev/null 2>&1
-      IS_VISIBLE="true"
-    elif [ "$POS_Y" -gt "27" ]; then
+    if [ "$POS_Y" -gt "27" ] && [ "$IS_VISIBLE" == "true" ]; then
       polybar-msg cmd hide > /dev/null 2>&1
       IS_VISIBLE="false"
+    elif [ "$POS_Y" -lt "5" ] && [ "$IS_VISIBLE" == "false" ]; then
+      polybar-msg cmd show > /dev/null 2>&1
+      IS_VISIBLE="true"
     fi
     sleep 1s
   done
