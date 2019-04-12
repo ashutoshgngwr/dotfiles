@@ -4,14 +4,22 @@ get_script_pid() {
   echo $(ps -aux | grep "$1 enable" | grep -v "grep" | awk '{ print $2 }')
 }
 
+is_window_fullscreen() {
+  xprop -id $(xdotool getactivewindow) | grep FULLSCREEN
+}
+
+get_mouse_y() {
+  xdotool getmouselocation | grep -oE "y:([0-9]+)" | grep -oE "([0-9]+)"
+}
+
 autohide_watchdog() {
   IS_VISIBLE="true"
   while [ true ]; do
-    POS_Y=$(xdotool getmouselocation | grep -oE "y:([0-9]+)" | grep -oE "([0-9]+)")
-    if [ "$POS_Y" -gt "27" ] && [ "$IS_VISIBLE" == "true" ]; then
+    POS_Y=$(get_mouse_y)
+    if [ "$IS_VISIBLE" == "true" ] && [ "$POS_Y" -gt 26 ]; then
       polybar-msg cmd hide > /dev/null 2>&1
       IS_VISIBLE="false"
-    elif [ "$POS_Y" -lt "5" ] && [ "$IS_VISIBLE" == "false" ]; then
+    elif [ "$IS_VISIBLE" == "false" ] && [ "$POS_Y" -lt "5" ] && [ -z "$(is_window_fullscreen)" ]; then
       polybar-msg cmd show > /dev/null 2>&1
       IS_VISIBLE="true"
     fi
