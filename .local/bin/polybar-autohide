@@ -5,7 +5,10 @@ get_script_pid() {
 }
 
 is_window_fullscreen() {
-  xprop -id $(xdotool getactivewindow) | grep FULLSCREEN
+  CURRENT_WID=$(xdotool getactivewindow)
+  if [ -n "$CURRENT_WID" ]; then
+    xprop -id "$CURRENT_WID" | grep "_NET_WM_STATE_FULLSCREEN"
+  fi
 }
 
 get_mouse_y() {
