@@ -22,7 +22,7 @@ set $w4    "4:web"
 set $w5    "5:files"
 set $w6    "6:document-editor"
 set $w7    "7:media-player"
-set $w8    "8:free"
+set $w8    "8:chat"
 set $w9    "9:free"
 set $w10   "10:torrent"
 
@@ -185,7 +185,8 @@ assign [class="^(jetbrains-(idea-ce|studio)|Postman)$"] $w3
 assign [class="^Google-chrome$"] $w4
 assign [instance="^pcmanfm$"] $w5
 assign [class="^Gimp.*$"] $w6
-assign [class="^(vlc|Kaku)$"] $w7
+assign [class="^vlc$"] $w7
+assign [instance="^telegram-desktop$"] $w8
 assign [instance="^transmission-gtk$"] $w10
 # for weird reasons, spotify doesn't like being handled by assign.
 for_window [class="Spotify"] move to workspace $w7
