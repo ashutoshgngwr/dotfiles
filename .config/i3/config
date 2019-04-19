@@ -220,7 +220,7 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 exec_always --no-startup-id compton
 
 # wallpaper 
-exec_always --no-startup-id feh --randomize --bg-fill --no-fehbg .config/wallpapers/*
+exec_always --no-startup-id feh-nasa
 
 # polybar
 exec_always --no-startup-id start-polybar

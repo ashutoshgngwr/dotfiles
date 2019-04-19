@@ -1,0 +1,56 @@
+#!/bin/bash
+
+##################################################################
+# A script to set NASA Astronomy Picture of the Day as wallpaper
+# Requires: curl, feh, jq
+# Usage: Configure this script to be run at login/startup
+# Author: Ashutosh Gangwar
+##################################################################
+
+WALLPAPER_PATH="$HOME/.cache/nasa-apod"
+# NASA APOD API Endpoint with DEMO_KEY (rate limits are more than enough for DEMO_KEY)
+APOD_API_URL="https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo"
+
+# TODO check if passed arguements are empty
+update_wallpaper() {
+  if [ -e "$WALLPAPER_PATH" ]; then
+    feh --bg-fill --no-fehbg "$WALLPAPER_PATH"
+  fi
+}
+
+wait_for_network() {
+  while ! ping -c 1 "www.nasa.gov" &> /dev/null; do
+    sleep 5s
+  done
+}
+
+fetch_wallpaper() {
+  update_wallpaper
+  wait_for_network
+  # Query API for APOD URL
+  APOD_URL=$(curl -sL "$APOD_API_URL" | jq -r .hdurl)
+  # Fetch and save APOD
+  curl -sL -o "$WALLPAPER_PATH" "$APOD_URL"
+  update_wallpaper
+}
+
+help() {
+  echo "feh-nasa: A script to set NASA Astronomy Picture of the Day as wallpaper"
+  echo "Usage: feh-nasa [-h|--help]"
+}
+
+main() {
+  case "$1" in
+    "--help"|"-h")
+      help
+      ;;
+    "")
+      fetch_wallpaper &
+      ;;
+    *)
+      help && exit 1
+      ;;
+  esac
+}
+
+main "$@"
