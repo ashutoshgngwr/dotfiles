@@ -168,8 +168,8 @@ bindsym XF86AudioPrev		exec --no-startup-id playerctl previous
 bindsym XF86AudioNext		exec --no-startup-id playerctl next
 bindsym XF86AudioPlay		exec --no-startup-id playerctl play-pause
 bindsym XF86AudioMute		exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
-bindsym XF86AudioRaiseVolume	exec --no-startup-id amixer -q -D pulse sset Master 5%+
-bindsym XF86AudioLowerVolume	exec --no-startup-id amixer -q -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume	exec --no-startup-id amixer -q -D pulse sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume	exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute
 bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 10
 bindsym $mod+Escape		exec --no-startup-id dm-tool lock
@@ -206,6 +206,11 @@ for_window [class="Nm-connection-editor"] move position center
 # GTK3 File Chooser Dialog window size issue workaround
 for_window [window_role="GtkFileChooserDialog"] resize set 720 560
 for_window [window_role="GtkFileChooserDialog"] move position center
+
+# float and reposition alarm-clock-applet
+for_window [class="Alarm-clock-applet"] floating enable
+for_window [class="Alarm-clock-applet"] resize set 320 480
+for_window [class="Alarm-clock-applet"] move position center
 
 # turn on num lock
 exec_always --no-startup-id numlockx on
