@@ -119,3 +119,5 @@ alias gd="git diff"
 # git diff staged
 alias gds="git diff --staged"
 
+# git fetch upstream and rebase
+alias gfr="git fetch upstream && git rebase -i upstream/master"
