@@ -207,11 +207,6 @@ for_window [class="Nm-connection-editor"] move position center
 for_window [window_role="GtkFileChooserDialog"] resize set 720 560
 for_window [window_role="GtkFileChooserDialog"] move position center
 
-# float and reposition alarm-clock-applet
-for_window [class="Alarm-clock-applet"] floating enable
-for_window [class="Alarm-clock-applet"] resize set 320 480
-for_window [class="Alarm-clock-applet"] move position center
-
 # turn on num lock
 exec_always --no-startup-id numlockx on
 
