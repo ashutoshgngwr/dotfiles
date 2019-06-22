@@ -5,10 +5,14 @@ get_script_pid() {
 }
 
 is_window_fullscreen() {
-  CURRENT_WID=$(xdotool getactivewindow)
+  CURRENT_WID=$(xdotool getactivewindow 2> /dev/null)
   if [ -n "$CURRENT_WID" ]; then
     xprop -id "$CURRENT_WID" | grep "_NET_WM_STATE_FULLSCREEN"
   fi
+}
+
+is_showing_desktop() {
+  xdotool getactivewindow 2> /dev/null
 }
 
 get_mouse_y() {
@@ -19,14 +23,21 @@ autohide_watchdog() {
   IS_VISIBLE="true"
   while [ true ]; do
     POS_Y=$(get_mouse_y)
-    if [ "$IS_VISIBLE" == "true" ] && [ "$POS_Y" -gt 26 ]; then
-      polybar-msg cmd hide > /dev/null 2>&1
-      IS_VISIBLE="false"
-    elif [ "$IS_VISIBLE" == "false" ] && [ "$POS_Y" -lt "5" ] && [ -z "$(is_window_fullscreen)" ]; then
-      polybar-msg cmd show > /dev/null 2>&1
-      IS_VISIBLE="true"
+    if [ "$IS_VISIBLE" == "false" ]; then
+      if [ -z "$(is_showing_desktop)" ]; then
+        polybar-msg cmd show > /dev/null 2>&1
+        IS_VISIBLE="true"
+      elif [ "$POS_Y" -lt "5" ] && [ -z "$(is_window_fullscreen)" ]; then
+        polybar-msg cmd show > /dev/null 2>&1
+        IS_VISIBLE="true"
+      fi
+    else
+      if [ "$POS_Y" -gt 26 ] && [ -z "$(is_window_fullscreen)" ] && [ -n "$(is_showing_desktop)" ]; then
+        polybar-msg cmd hide > /dev/null 2>&1
+        IS_VISIBLE="false"
+      fi
     fi
-    sleep 1s
+    sleep 0.25s
   done
 }
 
