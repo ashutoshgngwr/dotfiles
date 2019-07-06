@@ -30,7 +30,10 @@ fetch_wallpaper() {
   # Query API for APOD URL
   APOD_URL=$(curl -sL "$APOD_API_URL" | jq -r .hdurl)
   # Fetch and save APOD
-  curl -sL -o "$WALLPAPER_PATH" "$APOD_URL" && update_wallpaper
+  if [ -n "$APOD_URL" ]; then
+    curl -sL -o "$WALLPAPER_PATH" "$APOD_URL" || return
+    update_wallpaper
+  fi
 }
 
 help() {
