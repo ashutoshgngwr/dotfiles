@@ -212,7 +212,7 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 exec_always --no-startup-id numlockx on
 
 # Let's kill Mario. :D
-exec_always --no-startup-id paplay $HOME/.local/share/startup.wav
+# exec_always --no-startup-id paplay $HOME/.local/share/startup.wav
 
 # polkit authorization agent
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
