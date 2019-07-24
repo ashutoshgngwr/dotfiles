@@ -1,0 +1,6 @@
+# include local bin and ruby gems in path
+export PATH="$PATH:$HOME/.local/bin:$HOME/.gem/ruby/2.6.0/bin:$(yarn global bin)"
+
+# start gnome keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
