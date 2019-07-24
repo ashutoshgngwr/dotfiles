@@ -143,11 +143,11 @@ label-connected =   %downspeed:6%
 
 [module/ethernet]
 inherit = module/network-abs
-interface = enp7s0
+interface = enp4s0
 
 [module/wifi]
 inherit = module/network-abs
-interface = wlp6s0
+interface = wlp5s0
 
 [module/pulseaudio]
 type = internal/pulseaudio
