@@ -121,3 +121,9 @@ alias gds="git diff --staged"
 
 # git fetch upstream and rebase
 alias gfr="git fetch upstream && git rebase -i upstream/master"
+
+# editor
+export EDITOR="nano"
+
+# go path
+export GOPATH="$HOME/.go"
