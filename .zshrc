@@ -127,3 +127,6 @@ export EDITOR="nano"
 
 # go path
 export GOPATH="$HOME/.go"
+
+# go bin
+export PATH="$PATH:$GOPATH/bin"
