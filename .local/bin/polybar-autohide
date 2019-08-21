@@ -27,7 +27,7 @@ autohide_watchdog() {
       if [ -z "$(is_showing_desktop)" ]; then
         polybar-msg cmd show > /dev/null 2>&1
         IS_VISIBLE="true"
-      elif [ "$POS_Y" -lt "5" ] && [ -z "$(is_window_fullscreen)" ]; then
+      elif [ "$POS_Y" -lt "2" ] && [ -z "$(is_window_fullscreen)" ]; then
         polybar-msg cmd show > /dev/null 2>&1
         IS_VISIBLE="true"
       fi
