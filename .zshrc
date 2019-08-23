@@ -122,6 +122,12 @@ alias gds="git diff --staged"
 # git fetch upstream and rebase
 alias gfr="git fetch upstream && git rebase -i upstream/master"
 
+# git reset
+alias gr="git reset"
+
+# git reset --hard
+alias grh="git reset --hard"
+
 # editor
 export EDITOR="nano"
 
