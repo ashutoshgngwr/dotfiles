@@ -128,6 +128,9 @@ alias gr="git reset"
 # git reset --hard
 alias grh="git reset --hard"
 
+# free -h
+alias free="free -h"
+
 # editor
 export EDITOR="nano"
 
@@ -136,3 +139,6 @@ export GOPATH="$HOME/.go"
 
 # go bin
 export PATH="$PATH:$GOPATH/bin"
+
+# disable the freakin' beep
+unsetopt BEEP
