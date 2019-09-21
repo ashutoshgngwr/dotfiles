@@ -1,0 +1,81 @@
+export ZSH="/home/ashu/.config/oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+# CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+# DISABLE_AUTO_UPDATE="true"
+export UPDATE_ZSH_DAYS=7
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="%d %b"
+# ZSH_CUSTOM=/path/to/new-custom-folder
+plugins=(archlinux git git-extras sudo systemd kubectl)
+source $ZSH/oh-my-zsh.sh
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# clear
+alias c="clear"
+
+# exit
+alias e="exit"
+
+# df -h (human readable disk stats)
+alias df="df -h"
+
+# free -h
+alias free="free -h"
+
+# git add
+alias ga="git add"
+
+# git status
+alias gs="git status"
+
+# git diff unstaged
+alias gd="git diff"
+
+# git diff staged
+alias gds="git diff --staged"
+
+# git fetch upstream and rebase
+alias gfr="git fetch upstream && git rebase -i upstream/master"
+
+# git reset
+alias gr="git reset"
+
+# git reset --hard
+alias grh="git reset --hard"
+
+# git commit
+alias gc="git commit"
+
+# git-cz (conventional commit changelog using commitizen)
+alias gcz="git-cz"
+
+# disable the freakin' beep
+unsetopt BEEP
+
+# Go version manager
+[[ -s "/home/ashu/.gvm/scripts/gvm" ]] && source "/home/ashu/.gvm/scripts/gvm"

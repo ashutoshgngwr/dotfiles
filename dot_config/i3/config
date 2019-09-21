@@ -157,11 +157,11 @@ bindsym $mod+r mode "resize"
 default_border pixel 1
 default_floating_border none
 
-client.focused          #003300 #003300 #003300 #003300
-client.focused_inactive #003300 #003300 #003300 #003300
-client.unfocused        #001a00 #001a00 #001a00 #001a00
-client.urgent           #006600 #006600 #006600 #006600
-client.placeholder      #001a00 #001a00 #001a00 #001a00
+client.focused          #666666 #666666 #666666 #666666
+client.focused_inactive #3f3f3f #3f3f3f #3f3f3f #3f3f3f
+client.unfocused        #3f3f3f #3f3f3f #3f3f3f #3f3f3f
+client.urgent           #999999 #999999 #999999 #AAAAAA
+client.placeholder      #666666 #666666 #666666 #666666
 client.background       #000000 #000000 #000000 #000000
 
 bindsym XF86AudioPrev		exec --no-startup-id playerctl previous

@@ -1,7 +1,5 @@
-# Screenshots
+# .dotfiles
 
-![Screenshot #1][1]  
-![Screenshot #2][2]
+Dotfiles for my Arch Linux setup. Maintained using [chezmoi][chezmoi]!
 
-[1]: https://raw.githubusercontent.com/ashutoshgngwr/arch-dotfiles/master/screenshots/1.png
-[2]: https://raw.githubusercontent.com/ashutoshgngwr/arch-dotfiles/master/screenshots/2.png
+[chezmoi]: https://github.com/twpayne/chezmoi
