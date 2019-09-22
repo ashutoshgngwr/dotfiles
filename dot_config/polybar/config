@@ -7,34 +7,25 @@ compositing-underline = over
 compositing-border = over
 psuedo-transparency = true
 
-[colors]
-background = #AA1E152A
-solid-background = #1E152A
-foreground = #DDDDDD
-primary = #99F7AB
-secondary = #30BCED
-disabled = #60695C
-alert = #FC5130
-
 [bar/main]
-monitor = ${env:MONITOR:}
+monitor = ${env:MONITOR:eDP1}
 enable-ipc = true
 modules-left = clock active-window
 modules-center = workspaces
 modules-right = ethernet wifi battery powermenu pulseaudio
 tray-position = right
 tray-padding = 2
-tray-background = ${colors.background}
+tray-background = ${xrdb:color18:#181818}
 width = 100%
 height = 27
 padding-right = 2
 fixed-center = true
 line-size = 0
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${xrdb:color18:#181818}
+foreground = ${xrdb:color20:#202020}
 module-margin = 2
-font-0 = Droid Sans:pixelsize=11;3
-font-1 = FontAwesome:size=12;3
+font-0 = Ubuntu:size=10;2
+font-1 = FontAwesome:size=11;3
 cursor-click = pointer
 wm-restack = i3
 
@@ -49,11 +40,10 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-full =   <label-full>
 ramp-capacity-font = 1
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-0-foreground = ${xrdb:color1:#111111}
 ramp-capacity-1 = 
-ramp-capacity-1-foreground = ${colors.primary}
+ramp-capacity-1-foreground = ${xrdb:color7:#777777}
 ramp-capacity-2 = 
-ramp-capacity-2-foreground = ${colors.primary}
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
@@ -77,8 +67,8 @@ label-font = 1
 label-focused = %icon%
 label-focused-padding = 2
 label-focused-margin = 0.5
-label-focused-background = ${colors.secondary}
-label-focused-foreground = ${colors.solid-background}
+label-focused-background = ${xrdb:color20:#202020}
+label-focused-foreground = ${xrdb:color16:#161616}
 label-unfocused = %icon%
 label-unfocused-padding = 2
 label-unfocused-margin = 0.5
@@ -88,8 +78,8 @@ label-visible-margin = 0.5
 label-urgent = %icon%
 label-urgent-padding = 2
 label-urgent-margin = 0.5
-label-urgent-background = ${colors.alert}
-label-urgent-foreground = ${colors.solid-background}
+label-urgent-background = ${xrdb:color7:#777777}
+label-urgent-foreground = ${xrdb:color14:#141414}
 
 [module/clock]
 type = internal/date
@@ -105,9 +95,9 @@ date-alt = %a %d %b '%y, %I:%M %p
 type = custom/menu
 label-open = 
 label-close = 
-label-close-foreground = ${colors.foreground}
+label-close-foreground = ${xrdb:color20:#202020}
 label-close-padding = 2
-menu-0-foreground = ${colors.foreground}
+menu-0-foreground = ${xrdb:color18:#181818}
 menu-0-0 = 
 menu-0-0-exec = poweroff
 menu-0-1 = 
@@ -143,11 +133,11 @@ label-connected =   %downspeed:6%
 
 [module/ethernet]
 inherit = module/network-abs
-interface = enp4s0
+interface = ${xrdb:ethernet-id}
 
 [module/wifi]
 inherit = module/network-abs
-interface = wlp5s0
+interface = ${xrdb:wireless-id}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -156,7 +146,7 @@ use-ui-max = false
 interval = 3
 format-volume = <ramp-volume>
 label-muted = 
-label-muted-foreground = ${colors.disabled}
+label-muted-foreground = ${xrdb:color19:#191919}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
