@@ -68,7 +68,7 @@ label-focused = %icon%
 label-focused-padding = 2
 label-focused-margin = 0.5
 label-focused-background = ${xrdb:color20:#202020}
-label-focused-foreground = ${xrdb:color16:#161616}
+label-focused-foreground = ${xrdb:color4:#444444}
 label-unfocused = %icon%
 label-unfocused-padding = 2
 label-unfocused-margin = 0.5
@@ -79,7 +79,7 @@ label-urgent = %icon%
 label-urgent-padding = 2
 label-urgent-margin = 0.5
 label-urgent-background = ${xrdb:color7:#777777}
-label-urgent-foreground = ${xrdb:color14:#141414}
+label-urgent-foreground = ${xrdb:color1:#141414}
 
 [module/clock]
 type = internal/date
