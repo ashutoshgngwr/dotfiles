@@ -1,0 +1,13 @@
+[user]
+  email ={{ .email }}
+  name = Ashutosh Gangwar
+  signingkey = {{ .gpg-key-id }}
+[pull]
+  rebase = true
+[core]
+  editor = vim
+  autocrlf = input
+[commit]
+  gpgsign = true
+[url "git@github.com:"]
+  insteadOf = https://github.com/

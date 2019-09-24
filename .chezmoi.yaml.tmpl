@@ -1,10 +1,14 @@
 {{- $theme := promptString "theme" -}}
 {{- $ethernet := promptString "ethernet device id" -}}
 {{- $wireless := promptString "wireless device id" -}}
+{{- $email := promptString "email" -}}
+{{- $gpg-key-id := promptString "GPG key id" -}}
 
 sourceDir: code/dotfiles
 follow: true
 data:
+  email: {{ $email }}
+  gpg-key-id: {{ $gpg-key-id }}
   nic:
     wireless: {{ $wireless }}
     ethernet: {{ $ethernet }}
