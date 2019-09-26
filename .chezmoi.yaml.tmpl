@@ -2,13 +2,13 @@
 {{- $ethernet := promptString "ethernet device id" -}}
 {{- $wireless := promptString "wireless device id" -}}
 {{- $email := promptString "email" -}}
-{{- $gpgKeyId := promptString "GPG key id" -}}
+{{- $signingKey := promptString "GPG key id" -}}
 
 sourceDir: code/dotfiles
 follow: true
 data:
   email: {{ $email }}
-  gpg-key-id: {{ $gpgKeyId }}
+  signingkey: {{ $signingKey }}
   nic:
     wireless: {{ $wireless }}
     ethernet: {{ $ethernet }}
