@@ -74,6 +74,9 @@ alias gc="git commit"
 # git-cz (conventional commit changelog using commitizen)
 alias gcz="git-cz"
 
+# git fetch --all
+alias gfa="git fetch --all"
+
 # disable the freakin' beep
 unsetopt BEEP
 
