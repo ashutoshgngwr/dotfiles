@@ -19,8 +19,12 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="%d %b"
 # ZSH_CUSTOM=/path/to/new-custom-folder
-plugins=(archlinux git git-extras sudo systemd kubectl)
+plugins=(timer archlinux git git-extras kubectl)
 source $ZSH/oh-my-zsh.sh
+
+# time plugin conf
+TIMER_PRECISION=2
+TIMER_FORMAT="[%d]"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
