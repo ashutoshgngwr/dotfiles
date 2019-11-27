@@ -77,6 +77,27 @@ alias gfa="git fetch --all"
 # git remote prune
 alias grp="git remote prune"
 
+# kubectl alias
+alias kc="kubectl"
+
+# get resource
+alias kcg="kubectl get"
+
+# get all pods
+alias kcgp="kubectl get pods"
+
+# get all nodes
+alias kcgn="kubectl get nodes"
+
+# edit resource
+alias kce="kubectl edit"
+
+# describe resource
+alias kcd="kubectl describe"
+
+# port forward
+alias kcpf="kubectl port-forward"
+
 # disable the freakin' beep
 unsetopt BEEP
 
