@@ -129,7 +129,7 @@ bindsym $mod+Shift+s		sticky toggle
 
 #assign workspaces
 assign [class="^kitty$"] $w1
-assign [instance="^(code|emacs)$"] $w2
+assign [instance="^(code-oss|emacs)$"] $w2
 assign [class="^(jetbrains-(idea-ce|studio)|Postman)$"] $w3
 assign [class="^Google-chrome$"] $w4
 assign [instance="^pcmanfm$"] $w5
