@@ -102,6 +102,9 @@ alias kcd="kubectl describe"
 # port forward
 alias kcpf="kubectl port-forward"
 
+# python
+alias py="python"
+
 # disable the freakin' beep
 unsetopt BEEP
 
