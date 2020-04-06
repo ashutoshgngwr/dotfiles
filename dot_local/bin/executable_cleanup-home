@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+STUFF_TO_REMOVE="
+$HOME/.cache/yay
+$HOME/.cache/google-chrome
+$HOME/.thumbnails
+$HOME/.cache/thumbnails
+$HOME/.npm
+$HOME/.local/share/Trash
+$HOME/.gradle/caches
+"
+
+for item in $STUFF_TO_REMOVE; do
+  echo "removing $item..."
+  rm -rf "$item"
+done
