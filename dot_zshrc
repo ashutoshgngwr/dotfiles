@@ -20,7 +20,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="%d %b"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 plugins=(timer archlinux git git-extras kubectl)
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # time plugin conf
 TIMER_PRECISION=2
@@ -28,7 +28,7 @@ TIMER_FORMAT="[%d]"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+export EDITOR="vim"
 # else
 #  export EDITOR='mvim'
 # fi
@@ -81,32 +81,11 @@ alias gfa="git fetch --all"
 # git remote prune
 alias grp="git remote prune"
 
-# kubectl alias
+# kubectl
 alias kc="kubectl"
-
-# get resource
-alias kcg="kubectl get"
-
-# get all pods
-alias kcgp="kubectl get pods"
-
-# get all nodes
-alias kcgn="kubectl get nodes"
-
-# edit resource
-alias kce="kubectl edit"
-
-# describe resource
-alias kcd="kubectl describe"
-
-# port forward
-alias kcpf="kubectl port-forward"
 
 # python
 alias py="python"
 
 # disable the freakin' beep
 unsetopt BEEP
-
-# Go version manager
-[[ -s "/home/ashu/.gvm/scripts/gvm" ]] && source "/home/ashu/.gvm/scripts/gvm"
