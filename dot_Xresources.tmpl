@@ -1,7 +1,7 @@
 *ethernet-id:	{{ .nic.ethernet }}
 *wireless-id:	{{ .nic.wireless }}
 
-# theme: {{ .theme }}
+! theme: {{ .theme }}
 {{- with index .themes .theme }}
 
 *foreground:	#{{ .base05 }}
