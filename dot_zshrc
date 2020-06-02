@@ -89,3 +89,6 @@ alias py="python"
 
 # disable the freakin' beep
 unsetopt BEEP
+
+# Go version manager
+[[ -s "/home/ashu/.gvm/scripts/gvm" ]] && source "/home/ashu/.gvm/scripts/gvm"
