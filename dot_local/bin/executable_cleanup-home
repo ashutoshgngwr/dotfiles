@@ -5,6 +5,7 @@ set -e
 STUFF_TO_REMOVE="
 $HOME/.cache/yay
 $HOME/.cache/google-chrome
+$HOME/.cache/spotify
 $HOME/.thumbnails
 $HOME/.cache/thumbnails
 $HOME/.npm
