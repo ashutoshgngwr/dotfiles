@@ -92,3 +92,13 @@ unsetopt BEEP
 
 # Go version manager
 [[ -s "/home/ashu/.gvm/scripts/gvm" ]] && source "/home/ashu/.gvm/scripts/gvm"
+
+# helper to quickly run small Java programs
+jrun() {
+  if [ -f "$1.java" ]; then
+    javac "$1.java" && java "$1" && rm -f "$1.class"
+  else
+    echo "error: $1.java not found!"
+    return 1
+  fi
+}
