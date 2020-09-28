@@ -102,3 +102,33 @@ jrun() {
     return 1
   fi
 }
+
+# helper to slugify a string
+# accepts a single positional argument (the string itself)
+# https://gist.github.com/oneohthree/f528c7ae1e701ad990e6
+slugify() {
+  echo "$1" | iconv -t ascii//TRANSLIT | sed -r 's/[^a-zA-Z0-9]+/-/g; s/^-+\|-+$//g' | tr A-Z a-z
+}
+
+# helper to create a new Jekyll post. LoL
+# accepts a single positional argument
+# 1. title: title for the post
+jekyll_new_post() {
+  POSTS_DIR="./_posts"
+  if [ -z "$1" ]; then
+    echo "$0 needs a post title to create it."
+    return 1
+  fi
+  if [ ! -d "$POSTS_DIR" ]; then
+    echo "Working directory doesn't appear to be a Jekyll site's source."
+    return 1
+  fi
+
+  FILE_PATH="$POSTS_DIR/$(date +%F)-$(slugify $1).md"
+  echo "---" > "$FILE_PATH"
+  echo "layout: post" >> "$FILE_PATH"
+  echo "title: \"$1\"" >> "$FILE_PATH"
+  echo "date: $(date +'%F %T %z')" >> "$FILE_PATH"
+  echo "categories: default" >> "$FILE_PATH"
+  echo "---" >> "$FILE_PATH"
+}
