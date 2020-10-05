@@ -132,3 +132,27 @@ jekyll_new_post() {
   echo "categories: default" >> "$FILE_PATH"
   echo "---" >> "$FILE_PATH"
 }
+
+# shorthand to wait for an Android device to finish booting and
+# then disable animations and screen timeout.
+adb_prepare_device_for_tests() {
+  echo "waiting for a device..."
+  adb wait-for-device
+  echo "waiting for the device to boot..."
+  adb shell '
+    while [[ -z $(getprop sys.boot_completed) ]]; do
+      sleep 1;
+    done;
+  '
+
+  echo "disabling animations and screen timeout..."
+  adb shell '
+    settings put global window_animation_scale 0.0;
+    settings put global transition_animation_scale 0.0;
+    settings put global animator_duration_scale 0.0;
+    svc power stayon true;
+    input keyevent KEYCODE_WAKEUP;
+  '
+
+  echo "all done!"
+}
