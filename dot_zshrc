@@ -39,6 +39,9 @@ export EDITOR="vim"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# bundle gem installation path
+export BUNDLE_PATH="$HOME/.gems"
+
 # clear
 alias c="clear"
 
