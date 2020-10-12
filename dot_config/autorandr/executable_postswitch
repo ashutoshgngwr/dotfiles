@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# before adding feh-nasa to postswitch hook, polybar system tray was not
-# showing up. In future if it happens, this should be a good place to start
+# reload wallpaper so that it scales properly on new display
+feh-nasa
 
-feh-nasa # reload wallpaper so that it scales properly on new display
-
-start-polybar
-
-# need to disable autohide on multi-monitor setup because of positioning bug
+# disable touchpad gestures on multi-monitor setup
+# (will usually have an external mouse).
 if [ "$(xrandr --query | grep " connected" | wc -l)" == "1" ]; then
-  polybar-autohide enable
+  libinput-gestures-setup start
+else
+  libinput-gestures-setup stop
 fi

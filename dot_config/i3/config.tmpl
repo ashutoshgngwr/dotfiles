@@ -1,39 +1,50 @@
-set_from_resource $base00 base00 #000000
-set_from_resource $base01 base01 #111111
-set_from_resource $base03 base03 #333333
-set_from_resource $base05 base05 #555555
-set_from_resource $base07 base07 #777777
-set_from_resource $base08 base08 #888888
-set_from_resource $base0c base0c #cccccc
-set_from_resource $base0d base0d #dddddd
+{{- with index .themes .theme }}
 
-set $font Ubuntu
-set $font-size 11
+set $base00 #{{ .base00 }}
+set $base01 #{{ .base01 }}
+set $base02 #{{ .base02 }}
+set $base03 #{{ .base03 }}
+set $base04 #{{ .base04 }}
+set $base05 #{{ .base05 }}
+set $base06 #{{ .base06 }}
+set $base07 #{{ .base07 }}
+set $base08 #{{ .base08 }}
+set $base09 #{{ .base09 }}
+set $base0a #{{ .base0a }}
+set $base0b #{{ .base0b }}
+set $base0c #{{ .base0c }}
+set $base0d #{{ .base0d }}
+set $base0e #{{ .base0e }}
+set $base0f #{{ .base0f }}
 
-set $mod Mod4
+{{- end }}
 
-client.focused          $base05 $base0d $base00 $base0d $base0c
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+font pango:Source Sans Pro, FontAwesome 11
+
+client.background       $base02
+
+# <colorclass>          <border> <background> <text> <indicator> <child_border>
+client.focused          $base03 $base00 $base05 $base05 $base03
+client.focused_inactive $base02 $base03 $base07 $base02 $base02
+client.unfocused        $base02 $base03 $base07 $base02 $base02
+client.urgent           $base0c $base00 $base05 $base05 $base0c
+client.placeholder      $base02 $base03 $base07 $base02 $base02
 
 default_border pixel 1
 default_floating_border none
 
-font pango:$font $font-size
+set $mod Mod4
 
-set $w1    "1:terminal"
-set $w2    "2:code-visual-studio"
-set $w3    "3:code-intellij"
-set $w4    "4:web"
-set $w5    "5:files"
-set $w6    "6:document-editor"
-set $w7    "7:media-player"
-set $w8    "8:chat"
-set $w9    "9:free"
-set $w10   "10:torrent"
+set $w1    "1:"
+set $w2    "2:"
+set $w3    "3:"
+set $w4    "4:"
+set $w5    "5:"
+set $w6    "6:"
+set $w7    "7:"
+set $w8    "8:"
+set $w9    "9:"
+set $w10   "10:"
 
 floating_modifier $mod
 
@@ -130,15 +141,14 @@ bindsym $mod+Shift+s		sticky toggle
 
 #assign workspaces
 assign [class="^kitty$"] $w1
-assign [instance="^(code-oss|emacs)$"] $w2
-assign [class="^(jetbrains-(idea-ce|studio)|Postman)$"] $w3
-assign [class="^Google-chrome$"] $w4
-assign [instance="^pcmanfm$"] $w5
-assign [class="^Gimp.*|Joplin$"] $w6
-assign [class="^vlc$"] $w7
-assign [instance="^slack$"] $w8
+assign [instance="^(code-oss|jetbrains-(idea-ce|studio))$"] $w2
+assign [class="^Google-chrome$"] $w3
+assign [instance="^pcmanfm$"] $w4
+assign [class="^Gimp.*|Joplin$"] $w5
+assign [class="^vlc$"] $w6
+assign [class="^Tor Browser$"] $w9
 assign [instance="^transmission-gtk$"] $w10
-for_window [class="Spotify"] move to workspace $w7
+for_window [class="Spotify"] move to workspace $w6
 
 # float all pop-up windows
 for_window [window_role="pop-up"] floating enable
@@ -156,12 +166,52 @@ for_window [class="Nm-connection-editor"] move position center
 for_window [window_role="GtkFileChooserDialog"] resize set 720 560
 for_window [window_role="GtkFileChooserDialog"] move position center
 
+# float and reposition pulseaudio volume control (pavucontrol)
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set 940 540
+for_window [class="Pavucontrol"] move position center
+
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id dex -a
 exec_always --no-startup-id picom
-# feh-nasa, start-polybar and polybar-autohide are run by autorandr hooks. (on startup also)
+
+# feh-nasa and libinput-gestures is controlled by autorandr hooks. (on startup also)
 # exec_always --no-startup-id feh-nasa
-# exec_always --no-startup-id start-polybar
-# exec_always --no-startup-id polybar-autohide enable
-exec_always --no-startup-id libinput-gestures-setup start
+# exec_always --no-startup-id libinput-gestures-setup start
+
+bar {
+  position top
+  tray_padding 5
+  strip_workspace_numbers yes
+  status_command i3status-rs "$HOME/.config/i3/status.toml"
+
+  colors {
+    background  $base01 # Background color of the bar
+    statusline  $base06 # Text color to be used for the statusline
+    separator   $base03 # Text color to be used for the separator
+
+    # Border, background and text color for a workspace button when the
+    # workspace has focus
+    focused_workspace $base07 $base07 $base0d
+
+    # Border, background and text color for a workspace button when the
+    # workspace is active (visible) on some output, but the focus is on another
+    # one. You can only tell this apart from the focused workspace when you are
+    # using multiple monitors.
+    active_workspace $base05 $base05 $base0d
+
+    # Border, background and text color for a workspace button when the
+    # workspace does not have focus and is not active (visible) on any output.
+    # This will be the case for most workspaces.
+    inactive_workspace $base00 $base00 $base04
+
+    # Border, background and text color for a workspace button when the
+    # workspace contains a window with the urgency hint set.
+    urgent_workspace $base07 $base07 $base08
+
+    # Border, background and text color for the binding mode indicator. If not
+    # used, the colors will be taken from urgent_workspace.
+    binding_mode $base01 $base01 $base0a
+  }
+}

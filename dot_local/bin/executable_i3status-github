@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+
+'''
+A script to print the status line for a custom block to show GitHub notification
+count in i3status-rust.
+
+It is an alternative to built-in 'github' block available with i3status-rust.
+https://github.com/greshake/i3status-rust/blob/master/blocks.md#github
+
+The only difference is that instead of using a Personal Access Token, this
+script uses GitHub CLI 'gh' and only prints the total notification count.
+'''
+
+import json
+import os
+import subprocess
+
+
+def get_github_notification_count():
+    '''
+    Returns the notification count of user's GitHub account by making an API
+    call using the GitHub CLI tool.
+    '''
+
+    cmd = 'gh api /notifications'
+    stdout = subprocess.PIPE
+    stderr = open(os.devnull, 'w')
+    process = subprocess.run(
+        cmd, stdout=stdout, stderr=stderr, shell=True, universal_newlines=True)
+
+    if process.returncode != 0:
+        return 0  # mask errors by returning 0 count
+
+    array = json.loads(process.stdout)
+    return len(array)
+
+
+ncount = get_github_notification_count()
+print(
+    json.dumps({
+        "icon": "github",
+        "text": " " + str(ncount),
+        "state": {
+            0: "Idle",
+            1: "Info",
+            2: "Good",
+            3: "Warning"
+        }.get(ncount, "Critical")
+    })
+)

@@ -1,4 +1,3 @@
 #!/bin/bash
 
-# need to disable autohide on multi-monitor setup because of positioning bug
-polybar-autohide disable
+# placeholder to future

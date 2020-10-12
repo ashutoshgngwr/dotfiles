@@ -1,0 +1,63 @@
+[theme]
+name = "modern"
+[theme.overrides]
+separator = " \ue0b2"
+alternating_tint_bg = "#000000"
+alternating_tint_fg = "#000000"
+
+{{ with index .themes .theme -}}
+idle_bg = "#{{ .base01 }}"
+idle_fg = "#{{ .base06 }}"
+info_bg = "#{{ .base00 }}"
+info_fg = "#{{ .base05 }}"
+good_bg = "#{{ .base02 }}"
+good_fg = "#{{ .base07 }}"
+warning_bg = "#{{ .base0a }}"
+warning_fg = "#{{ .base00 }}"
+critical_bg = "#{{ .base09 }}"
+critical_fg = "#{{ .base07 }}"
+{{- end }}
+
+[icons]
+name = "awesome"
+
+[[block]]
+block = "custom"
+interval = 5
+json = true
+
+{{- $time_short :=  `echo "{\"icon\":\"time\",\"state\":\"Idle\", \"text\": \"$(date +%H:%M)\"}"` }}
+{{- $time_long :=  `echo "{\"icon\":\"time\",\"state\":\"Good\", \"text\": \"$(date +%a\ %d\ %b,\ %H:%M)\"}"` }}
+cycle = ['{{ $time_short }}', '{{ $time_long }}']
+
+[[block]]
+block = "custom"
+interval = 60
+json = true
+command = "i3status-github"
+on_click = "xdg-open 'https://github.com/notifications'"
+
+[[block]]
+block = "net"
+device = "{{ .nic.ethernet }}"
+interval = 1
+hide_missing = true
+hide_inactive = true
+
+[[block]]
+block = "net"
+device = "{{ .nic.wireless }}"
+interval = 1
+hide_missing = true
+hide_inactive = true
+
+[[block]]
+block = "battery"
+interval = 1
+format = "{percentage}%"
+full_format = "{percentage}%"
+
+[[block]]
+block = "sound"
+step_width = 1
+max_vol = 100
