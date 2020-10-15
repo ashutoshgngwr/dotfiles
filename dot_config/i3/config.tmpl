@@ -171,6 +171,9 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set 940 540
 for_window [class="Pavucontrol"] move position center
 
+# lay out chrome windows tabbed. need more screen space for Browsers
+for_window [class="^Google-chrome$"] layout tabbed
+
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id dex -a
