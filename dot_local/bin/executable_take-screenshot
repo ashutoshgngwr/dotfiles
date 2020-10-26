@@ -1,8 +1,0 @@
-#!/bin/sh
-
-OUTPUT_DIR="$HOME/screenshots"
-OUTPUT_PATH="$OUTPUT_DIR/$(date +%Y-%m-%d-%H-%M-%S).png"
-
-test -d "$OUTPUT_DIR" || mkdir -p "$OUTPUT_DIR"
-imlib2_grab "$OUTPUT_PATH"
-notify-send "Pew! Pew!" "Shots fired! I repeat, shots fired!" -u "normal" -i "$OUTPUT_PATH"

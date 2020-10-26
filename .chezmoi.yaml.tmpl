@@ -1,14 +1,18 @@
 {{- $theme := promptString "theme" -}}
 {{- $ethernet := promptString "ethernet device id" -}}
 {{- $wireless := promptString "wireless device id" -}}
-{{- $email := promptString "email" -}}
-{{- $signingKey := promptString "GPG key id" -}}
+{{- $gitEmail := promptString "git author email" -}}
+{{- $gitSigningKey := promptString "git GPG key id" -}}
+{{- $joplinGitRepo := promptString "Joplin backup Git repo" -}}
 
 sourceDir: code/dotfiles
 follow: true
 data:
-  email: {{ $email }}
-  signingkey: {{ $signingKey }}
+  git:
+    email: {{ $gitEmail }}
+    signingkey: {{ $gitSigningKey }}
+  joplin:
+    gitrepo: {{ $joplinGitRepo }}
   nic:
     wireless: {{ $wireless }}
     ethernet: {{ $ethernet }}

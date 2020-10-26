@@ -3,3 +3,13 @@ export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/c
 export PATH="$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$(yarn global bin):$PATH"
 
 export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+
+# bundle gem installation path
+export BUNDLE_PATH="$HOME/.bundle/gems"
+
+# gopath
+export GOPATH="$HOME/.go"
+
+# sync systemd environment with the session's (needed for things that interact
+# with SSH agent)
+systemctl --user import-environment

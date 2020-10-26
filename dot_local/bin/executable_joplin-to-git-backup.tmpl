@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+joplin_cmd="$(yarn global bin)/joplin"
+backup_dir="/tmp/joplin-backup-$(date +%s)"
+backup_repo="{{ .joplin.gitrepo }}"
+
+# wait for network
+while ! ping -c 1 "google.com" &> /dev/null; do
+  sleep 5s
+done
+
+git clone --depth=1 "$backup_repo" "$backup_dir"
+"$joplin_cmd" sync
+
+cd "$backup_dir"
+rm -f *.md
+rm -f resources/*
+
+"$joplin_cmd" --log-level debug export --format raw "$backup_dir"
+
+git add .
+git commit --no-gpg-sign --allow-empty -m "update $(date -R)"
+git push origin master
