@@ -1,15 +1,24 @@
 {
-  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "editor.formatOnSave": true,
-  "files.autoSave": "afterDelay",
-  "window.zoomLevel": -1,
-  "markdown.preview.fontSize": 20,
+  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', monospace, 'FontAwesome'",
   "editor.fontSize": 18,
   "editor.fontWeight": "500",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "emmet.triggerExpansionOnTab": true,
+  "files.autoSave": "afterDelay",
+  "go.autocompleteUnimportedPackages": true,
+  "go.formatTool": "goimports",
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true
+  },
+  "go.useLanguageServer": true,
+  "markdown.preview.fontSize": 20,
+  "python.languageServer": "Microsoft",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.zoomLevel": -1,
   "workbench.colorTheme": "Night Owl",
   "workbench.iconTheme": "vscode-icons",
-  "editor.formatOnPaste": true,
-  "emmet.triggerExpansionOnTab": true,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -22,19 +31,13 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "go.formatTool": "goimports",
-  "go.autocompleteUnimportedPackages": true,
-  "go.useLanguageServer": true,
-  "go.languageServerExperimentalFeatures": {
-    "diagnostics": true // for diagnostics as you type
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 }
