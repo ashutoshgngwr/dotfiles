@@ -15,10 +15,15 @@
   "go.useLanguageServer": true,
   "markdown.preview.fontSize": 20,
   "python.languageServer": "Microsoft",
+  "sundial.sunrise": "09:00",
+  "sundial.sunset": "18:30",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.autoDetectColorScheme": false,
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Night Owl",
   "workbench.iconTheme": "vscode-icons",
+  "workbench.preferredDarkColorTheme": "Night Owl",
+  "workbench.preferredLightColorTheme": "Night Owl Light",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
