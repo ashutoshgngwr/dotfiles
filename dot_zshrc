@@ -126,7 +126,9 @@ jekyll_new_post() {
   echo "layout: post" >> "$FILE_PATH"
   echo "title: \"$1\"" >> "$FILE_PATH"
   echo "date: $(date +'%F %T %z')" >> "$FILE_PATH"
-  echo "categories: default" >> "$FILE_PATH"
+  echo "tags: default" >> "$FILE_PATH"
+  echo "image: false" >> "$FILE_PATH"
+  echo "mathjax: false" >> "$FILE_PATH"
   echo "---" >> "$FILE_PATH"
 }
 
