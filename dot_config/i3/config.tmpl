@@ -171,6 +171,12 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set 940 540
 for_window [class="Pavucontrol"] move position center
 
+# float and reposition KeePassXC
+for_window [instance="keepassxc"] floating enable
+for_window [instance="keepassxc"] resize set 940 540
+for_window [instance="keepassxc"] move position center
+
+
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id dex -a
