@@ -1,6 +1,6 @@
 export ANDROID_HOME="$HOME/.android-sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
-export PATH="$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$(yarn global bin):$PATH"
+export PATH="$HOME/.local/bin:$(yarn global bin):$PATH"
 
 export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 

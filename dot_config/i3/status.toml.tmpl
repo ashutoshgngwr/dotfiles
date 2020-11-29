@@ -5,7 +5,7 @@ separator = " \ue0b2"
 alternating_tint_bg = "#000000"
 alternating_tint_fg = "#000000"
 
-{{ with index .themes .theme -}}
+{{ with index .themes .theme.color -}}
 idle_bg = "#{{ .base01 }}"
 idle_fg = "#{{ .base06 }}"
 info_bg = "#{{ .base00 }}"
@@ -23,7 +23,7 @@ name = "awesome"
 
 [[block]]
 block = "custom"
-interval = 5
+interval = 1
 json = true
 
 {{- $time_short :=  `echo "{\"icon\":\"time\",\"state\":\"Idle\", \"text\": \"$(date +%H:%M)\"}"` }}
@@ -36,20 +36,6 @@ interval = 60
 json = true
 command = "i3status-github"
 on_click = "xdg-open 'https://github.com/notifications'"
-
-[[block]]
-block = "net"
-device = "{{ .nic.ethernet }}"
-interval = 1
-hide_missing = true
-hide_inactive = true
-
-[[block]]
-block = "net"
-device = "{{ .nic.wireless }}"
-interval = 1
-hide_missing = true
-hide_inactive = true
 
 [[block]]
 block = "battery"

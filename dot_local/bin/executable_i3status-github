@@ -42,9 +42,13 @@ print(
         "text": " " + str(ncount),
         "state": {
             0: "Idle",
-            1: "Info",
-            2: "Good",
-            3: "Warning"
+            1: "Idle",
+            2: "Info",
+            3: "Info",
+            4: "Good",
+            5: "Good",
+            6: "Warning",
+            7: "Warning"
         }.get(ncount, "Critical")
     })
 )

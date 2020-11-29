@@ -1,5 +1,5 @@
-! theme: {{ .theme }}
-{{- with index .themes .theme }}
+! theme: {{ .theme.color }}
+{{- with index .themes .theme.color }}
 
 *foreground:	#{{ .base05 }}
 *background:	#{{ .base00 }}

@@ -1,6 +1,12 @@
-{{- $theme := promptString "theme" -}}
-{{- $ethernet := promptString "ethernet device id" -}}
-{{- $wireless := promptString "wireless device id" -}}
+{{- $colorTheme := promptString "color theme" -}}
+{{- $gtkTheme := promptString "GTK theme" -}}
+{{- $iconTheme := promptString "icon theme" -}}
+{{- $cursorTheme := promptString "cursor theme" -}}
+{{- $serifFont := promptString "serif font" -}}
+{{- $sansSerifFont := promptString "sans-serif font" -}}
+{{- $monoFont := promptString "mono font" -}}
+{{- $emojiFont := promptString "emoji font" -}}
+{{- $iconFont := promptString "icon font" -}}
 {{- $gitEmail := promptString "git author email" -}}
 {{- $gitSigningKey := promptString "git GPG key id" -}}
 {{- $joplinGitRepo := promptString "Joplin backup Git repo" -}}
@@ -13,10 +19,17 @@ data:
     signingkey: {{ $gitSigningKey }}
   joplin:
     gitrepo: {{ $joplinGitRepo }}
-  nic:
-    wireless: {{ $wireless }}
-    ethernet: {{ $ethernet }}
-  theme: {{ $theme }}
+  theme:
+    color: {{ $colorTheme }}
+    gtk: {{ $gtkTheme }}
+    icon: {{ $iconTheme }}
+    cursor: {{ $cursorTheme }}
+  font:
+    serif: {{ $serifFont }}
+    sansserif: {{ $sansSerifFont }}
+    mono: {{ $monoFont }}
+    emoji: {{ $emojiFont }}
+    icon: {{ $iconFont }}
   themes:
     horizondark:
       base00: 1C1E26

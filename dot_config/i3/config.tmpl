@@ -1,4 +1,4 @@
-{{- with index .themes .theme }}
+{{- with index .themes .theme.color }}
 
 set $base00 #{{ .base00 }}
 set $base01 #{{ .base01 }}
@@ -19,7 +19,7 @@ set $base0f #{{ .base0f }}
 
 {{- end }}
 
-font pango:Source Sans Pro, FontAwesome 11
+font pango:{{ .font.sansserif }}, {{ .font.icon }} 11
 
 client.background       $base02
 
@@ -37,7 +37,7 @@ set $mod Mod4
 
 set $w1    "1:"
 set $w2    "2:"
-set $w3    "3:"
+set $w3    "3:"
 set $w4    "4:"
 set $w5    "5:"
 set $w6    "6:"
@@ -142,7 +142,7 @@ bindsym $mod+Shift+s		sticky toggle
 #assign workspaces
 assign [class="^kitty$"] $w1
 assign [class="^(Code|jetbrains-(idea-ce|studio))$"] $w2
-assign [class="^Google-chrome$"] $w3
+assign [class="^(Google-chrome|firefox)$"] $w3
 assign [instance="^pcmanfm$"] $w4
 assign [class="^Gimp.*|Joplin$"] $w5
 assign [class="^vlc$"] $w6

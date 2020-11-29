@@ -21,3 +21,6 @@ rm -f resources/*
 git add .
 git commit --no-gpg-sign --allow-empty -m "update $(date -R)"
 git push origin master
+
+cd "/tmp"
+rm -rf "$backup_dir"
