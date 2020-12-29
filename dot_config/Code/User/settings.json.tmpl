@@ -1,9 +1,13 @@
 {
+  "debug.openDebug": "openOnDebugBreak",
   "editor.fontFamily": "monospace, '{{ .font.icon }}'",
   "editor.fontSize": 18,
   "editor.fontWeight": "500",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.rulers": [
+    80
+  ],
   "editor.suggestSelection": "first",
   "emmet.triggerExpansionOnTab": true,
   "files.autoSave": "afterDelay",
@@ -15,6 +19,16 @@
   "go.useLanguageServer": true,
   "markdown.preview.fontSize": 20,
   "python.languageServer": "Microsoft",
+  "emeraldwalk.runonsave": {
+    "autoClearConsole": true,
+    "commands": [
+      {
+        "match": "\\.arb$",
+        "isAsync": false,
+        "cmd": "cd ${workspaceFolder}; flutter gen-l10n"
+      }
+    ]
+  },
   "sundial.sunrise": "09:00",
   "sundial.sunset": "18:30",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -24,6 +38,14 @@
   "workbench.iconTheme": "vscode-icons",
   "workbench.preferredDarkColorTheme": "Night Owl",
   "workbench.preferredLightColorTheme": "Night Owl Light",
+  "xmlTools.splitAttributesOnFormat": true,
+  "[dart]": {
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -37,6 +59,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {

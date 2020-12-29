@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-joplin_cmd="$(yarn global bin)/joplin"
+set -e
+
+joplin_cmd="/usr/bin/joplin-cli"
 backup_dir="/tmp/joplin-backup-$(date +%s)"
 backup_repo="{{ .joplin.gitrepo }}"
 
