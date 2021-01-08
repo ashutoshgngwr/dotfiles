@@ -5,20 +5,9 @@
   "editor.fontWeight": "500",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "editor.suggestSelection": "first",
   "emmet.triggerExpansionOnTab": true,
-  "files.autoSave": "afterDelay",
-  "go.autocompleteUnimportedPackages": true,
-  "go.formatTool": "goimports",
-  "go.languageServerExperimentalFeatures": {
-    "diagnostics": true
-  },
-  "go.useLanguageServer": true,
-  "markdown.preview.fontSize": 20,
-  "python.languageServer": "Microsoft",
   "emeraldwalk.runonsave": {
     "autoClearConsole": true,
     "commands": [
@@ -29,6 +18,24 @@
       }
     ]
   },
+  "files.autoSave": "afterDelay",
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true
+  },
+  "go.lintTool": "golangci-lint",
+  "go.useLanguageServer": true,
+  "gopls": {
+    "codelenses": {
+      "generate": false,
+      "vendor": false
+    },
+    "completeUnimported": true,
+    "gofumpt": true,
+    "staticcheck": true,
+    "usePlaceholders": true
+  },
+  "markdown.preview.fontSize": 20,
+  "python.languageServer": "Microsoft",
   "sundial.sunrise": "09:00",
   "sundial.sunset": "18:30",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -46,14 +53,15 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[go.mod]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -64,8 +72,17 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"

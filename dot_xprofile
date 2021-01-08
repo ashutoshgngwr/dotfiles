@@ -1,16 +1,18 @@
 export ANDROID_HOME="$HOME/.android-sdk"
-export FLUTTER_HOME="$HOME/.flutter-sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+
+export FLUTTER_HOME="$HOME/.flutter-sdk"
 export PATH="$FLUTTER_HOME/bin:$PATH"
+
+export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
+
 export PATH="$HOME/.local/bin:$(yarn global bin):$PATH"
 
 export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 
 # bundle gem installation path
 export BUNDLE_PATH="$HOME/.bundle/gems"
-
-# gopath
-export GOPATH="$HOME/.go"
 
 # sync systemd environment with the session's (needed for things that interact
 # with SSH agent)
