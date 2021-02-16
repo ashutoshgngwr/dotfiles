@@ -2,7 +2,7 @@
 
 set -e
 
-joplin_cmd="/usr/bin/joplin"
+joplin_cmd="$(yarn global bin)/joplin"
 backup_dir="/tmp/joplin-backup-$(date +%s)"
 backup_repo="{{ .joplin.gitrepo }}"
 
