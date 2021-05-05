@@ -104,7 +104,7 @@ jrun() {
 # accepts a single positional argument (the string itself)
 # https://gist.github.com/oneohthree/f528c7ae1e701ad990e6
 slugify() {
-  echo "$1" | iconv -t ascii//TRANSLIT | sed -r 's/[^a-zA-Z0-9]+/-/g; s/^-+\|-+$//g' | tr A-Z a-z
+  echo "$@" | iconv -t ascii//TRANSLIT | sed -r 's/[^a-zA-Z0-9]+/-/g; s/^-+\|-+$//g' | tr A-Z a-z
 }
 
 # helper to create a new Jekyll post. LoL
@@ -121,7 +121,7 @@ jekyll_new_post() {
     return 1
   fi
 
-  FILE_PATH="$POSTS_DIR/$(date +%F)-$(slugify $1).md"
+  FILE_PATH="$POSTS_DIR/$(date +%F)-$(slugify $@).md"
   echo "---" > "$FILE_PATH"
   echo "layout: post" >> "$FILE_PATH"
   echo "title: \"$1\"" >> "$FILE_PATH"
