@@ -45,11 +45,14 @@ alias c="clear"
 # exit
 alias e="exit"
 
-# df -h (human readable disk stats)
+# human readable disk stats
 alias df="df -h"
 
-# free -h
+# human readable mem stats
 alias free="free -h"
+
+# human readable
+alias du="du -h"
 
 # git add
 alias ga="git add"
