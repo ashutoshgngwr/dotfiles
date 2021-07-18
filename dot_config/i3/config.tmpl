@@ -175,6 +175,9 @@ for_window [instance="keepassxc"] floating enable
 for_window [instance="keepassxc"] resize set 940 540
 for_window [instance="keepassxc"] move position center
 
+# float Gnome System Monitor
+for_window [instance="gnome-system-monitor"] floating enable
+for_window [instance="gnome-system-monitor"] move position center
 
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -187,7 +190,7 @@ exec_always --no-startup-id picom
 
 bar {
     position top
-    tray_padding 5
+    tray_padding 4
     strip_workspace_numbers yes
     status_command i3status-rs "$HOME/.config/i3/status.toml"
 
