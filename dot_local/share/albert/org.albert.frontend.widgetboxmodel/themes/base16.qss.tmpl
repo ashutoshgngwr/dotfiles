@@ -1,0 +1,76 @@
+/*
+ * Base 16 template (Golang template format) for Albert Launcher.
+ */
+
+{{- with index .themes .theme.color }}
+
+{{ $transparency := "cc" }}
+
+* {
+    border: none;
+    background-color: transparent;
+    color: #{{ .base04 }};
+}
+
+#frame {
+    min-width: 700px;
+    max-width: 700px;
+    padding: 4px 8px;
+    border: 1px solid #{{ .base01 }};
+    background-color: #{{ $transparency }}{{ .base00 }};
+}
+
+#inputLine {
+    padding: 2px 16px;
+    font-size: 48px;
+    selection-color: #{{ .base04 }};
+    selection-background-color: #{{ $transparency }}{{ .base02 }};
+}
+
+#settingsButton {
+    min-width:16px;
+    min-height:16px;
+    max-width:16px;
+    max-height:16px;
+    margin: 8px 8px 0px 0px;
+    padding: 2px;
+    color: #{{ .base03 }};
+}
+
+QListView#resultsList {
+    selection-color: #{{ .base00 }};
+    icon-size: 48px;
+    font-size: 24px;
+}
+
+QListView#resultsList::item{
+    padding: 8px 16px;
+}
+
+QListView#resultsList::item:selected {
+    border-radius: 16px;
+    background-color: #{{ .base0d }};
+}
+
+QListView QScrollBar:vertical  {
+    width: 2px;
+    background-color: #{{ $transparency }}{{ .base01 }};
+}
+
+QListView QScrollBar::handle:vertical  {
+    background-color: #{{ $transparency }}{{ .base04 }};
+    border-radius: 3px;
+    min-height: 80px;
+}
+
+QListView QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QListView QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QListView QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    border: 0px;
+    width: 0px;
+    height: 0px;
+    background-color: transparent;
+    color: transparent;
+}
+
+{{- end }}
