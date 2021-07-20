@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # reload wallpaper so that it scales properly on new display
-feh-nasa
+feh-nasa &
 
 # disable touchpad gestures on multi-monitor setup
 # (will usually have an external mouse).

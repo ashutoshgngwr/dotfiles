@@ -1,3 +1,11 @@
+# start GNOME keyring daemon or initialize an already running instance and
+# export SSH_AUTH_SOCK provided by the GNOME keyring daemon
+export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+
+# add SSH_AUTH_SOCK to systemd user environment. Required for scripts that use ssh-agent
+# e.g. joplin-to-git-backup script uses 'git push'
+systemctl --user import-environment SSH_AUTH_SOCK
+
 export ANDROID_HOME="$HOME/.android-sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 
@@ -9,11 +17,5 @@ export PATH="$GOPATH/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$(yarn global bin):$PATH"
 
-export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-
 # bundle gem installation path
 export BUNDLE_PATH="$HOME/.bundle/gems"
-
-# sync systemd environment with the session's (needed for things that interact
-# with SSH agent)
-systemctl --user import-environment
