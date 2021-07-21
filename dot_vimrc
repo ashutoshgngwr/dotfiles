@@ -1,0 +1,38 @@
+" vi:syntax=vim
+call plug#begin('~/.vim/plugged')
+    " base 16 color schemes
+    Plug 'chriskempson/base16-vim'
+call plug#end()
+
+
+syntax on
+
+set number      " show line numbers
+set cursorline  " highlight current line
+set splitbelow  " split below instead of above (default)
+set splitright  " split right instead of left (default)
+
+set noswapfile              " disable swap files
+set wildmenu                " enhanced command autocompletiton
+set clipboard=unnamedplus   " use X clipboard buffer
+
+set ignorecase  " ignore case for search queries
+set incsearch   " incremental searches
+set hlsearch    " hightlight all searches
+
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " number of spaces to use for autoindent
+set expandtab       " tabs are space
+set autoindent
+set copyindent      " copy indent from the previous line
+
+" terminal colors
+" set termguicolors
+
+" base16 color scheme
+let base16colorspace=256
+colorscheme base16-atelier-forest-light
+
+" disable underlining for highlighted line
+hi CursorLine cterm=none
