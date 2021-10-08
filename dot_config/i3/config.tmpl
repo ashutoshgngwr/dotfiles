@@ -180,8 +180,8 @@ for_window [instance="gnome-system-monitor"] move position center
 
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always --no-startup-id /usr/bin/picom
 exec_always --no-startup-id dex -a
-exec_always --no-startup-id picom
 
 # feh-nasa and libinput-gestures is controlled by autorandr hooks. (on startup also)
 # exec_always --no-startup-id feh-nasa

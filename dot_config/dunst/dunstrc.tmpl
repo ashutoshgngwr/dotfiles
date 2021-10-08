@@ -1,3 +1,4 @@
+{{- $iconTheme := .theme.icon }}
 {{- with index .themes .theme.color }}
 [global]
   # Which monitor should the notifications be displayed on.
@@ -28,7 +29,7 @@
   # the top and down respectively.
   # The width can be negative.  In this case the actual width is the
   # screen width minus the width defined in within the geometry option.
-  geometry = "320x5-25+50"
+  geometry = "360x5-25+50"
 
   # Turn on the progess bar
   progress_bar = true
@@ -60,7 +61,7 @@
 
   # The height of the entire notification.  If the height is smaller
   # than the font height and padding combined, it will be raised
-  # to the font height and padding. 
+  # to the font height and padding.
   notification_height = 0
 
   # Draw a line of "separator_height" pixel height between two
@@ -139,7 +140,7 @@
   #   %n  progress value if set without any extra characters
   #   %%  Literal %
   # Markup is allowed
-  format = "<b>%s %p</b>\n%b"
+  format = "<b>%s</b> %p (%a)\n%b"
 
   # Alignment of message text.
   # Possible values are "left", "center" and "right".
@@ -175,22 +176,22 @@
   show_indicators = yes
 
   # Align icons left/right/off
-  icon_position = left
+  icon_position = right
 
   # Scale small icons up to this size, set to 0 to disable. Helpful
   # for e.g. small files or high-dpi screens. In case of conflict,
   # max_icon_size takes precedence over this.
-  min_icon_size = 0
+  min_icon_size = 32
 
   # Scale larger icons down to this size, set to 0 to disable
-  max_icon_size = 32
+  max_icon_size = 128
 
   # Paths to default icons.
-  # icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+  icon_path = /usr/share/icons/{{ $iconTheme }}/16x16/apps/:/usr/share/icons/{{ $iconTheme }}/16x16/categories/:/usr/share/icons/{{ $iconTheme }}/16x16/devices/:/usr/share/icons/{{ $iconTheme }}/16x16/status/
 
   # Should a notification popped up from history be sticky or timeout
   # as if it would normally do.
-  sticky_history = yes
+  sticky_history = no
 
   # Maximum amount of notifications kept in history
   history_length = 20
@@ -256,8 +257,8 @@
   # * close_all: Close all notifications.
   # These values can be strung together for each mouse event, and
   # will be executed in sequence.
-  mouse_left_click = close_current
-  mouse_middle_click = do_action, close_current
+  mouse_left_click = do_action, close_current
+  mouse_middle_click = close_current
   mouse_right_click = close_all
 
 # The internal keyboard shortcut support in dunst is now considered deprecated
