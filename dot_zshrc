@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="%d %b"
 # ZSH_CUSTOM=/path/to/new-custom-folder
-plugins=(timer archlinux git git-lfs git-extras kubectl adb)
+plugins=(timer archlinux git git-lfs git-extras kubectl adb aws)
 source "$ZSH/oh-my-zsh.sh"
 
 # time plugin conf

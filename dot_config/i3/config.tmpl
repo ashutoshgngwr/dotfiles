@@ -55,20 +55,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
-
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# bindsym $mod+Shift+Left move left
-# bindsym $mod+Shift+Down move down
-# bindsym $mod+Shift+Up move up
-# bindsym $mod+Shift+Right move right
 
 bindsym $mod+semicolon split h
 bindsym $mod+v split v
@@ -106,6 +96,8 @@ bindsym $mod+Shift+0 move container to workspace $w10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+s sticky toggle
+bindsym $mod+r       mode "resize"
 
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -113,15 +105,8 @@ mode "resize" {
     bindsym k resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
 
-    # bindsym Left resize shrink width 10 px or 10 ppt
-    # bindsym Down resize grow height 10 px or 10 ppt
-    # bindsym Up resize shrink height 10 px or 10 ppt
-    # bindsym Right resize grow width 10 px or 10 ppt
-
     bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 bindsym XF86AudioPrev           exec --no-startup-id playerctl previous
 bindsym XF86AudioNext           exec --no-startup-id playerctl next
@@ -131,11 +116,17 @@ bindsym XF86AudioRaiseVolume    exec --no-startup-id amixer -q -D pulse sset Mas
 bindsym XF86AudioLowerVolume    exec --no-startup-id amixer -q -D pulse sset Master 2%- unmute
 bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 5
-bindsym $mod+Escape             exec --no-startup-id dm-tool lock
-bindsym Print                   exec --no-startup-id flameshot gui -p $HOME/screenshots
-bindsym Shift+Print             exec --no-startup-id flameshot full -p $HOME/screenshots
+
+bindsym $mod+Escape             exec dm-tool lock
 bindsym grave                   exec --no-startup-id albert toggle
-bindsym $mod+Shift+s            sticky toggle
+
+bindsym $mod+Mod1+n             exec --no-startup-id dunstctl close
+bindsym $mod+Shift+n            exec --no-startup-id dunstctl close-all
+bindsym $mod+n                  exec --no-startup-id dunstctl history-pop
+bindsym $mod+Ctrl+n             exec --no-startup-id dunstctl context
+
+bindsym Print                   exec flameshot gui -p $HOME/screenshots
+bindsym Shift+Print             exec flameshot full -p $HOME/screenshots
 
 #assign workspaces
 assign [class="^kitty$"] $w1
@@ -181,11 +172,7 @@ for_window [instance="gnome-system-monitor"] move position center
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id /usr/bin/picom
-exec_always --no-startup-id dex -a
-
-# feh-nasa and libinput-gestures is controlled by autorandr hooks. (on startup also)
-# exec_always --no-startup-id feh-nasa
-# exec_always --no-startup-id libinput-gestures-setup start
+exec_always dex -a
 
 bar {
     position top
