@@ -125,15 +125,15 @@ bindsym $mod+Shift+n            exec --no-startup-id dunstctl close-all
 bindsym $mod+n                  exec --no-startup-id dunstctl history-pop
 bindsym $mod+Ctrl+n             exec --no-startup-id dunstctl context
 
-bindsym Print                   exec flameshot gui -p $HOME/screenshots
-bindsym Shift+Print             exec flameshot full -p $HOME/screenshots
+bindsym Print                   exec flameshot gui
+bindsym Shift+Print             exec flameshot full
 
 #assign workspaces
 assign [class="^kitty$"] $w1
 assign [class="^(Code|jetbrains-(idea-ce|studio))$"] $w2
 assign [class="^(Google-chrome|firefox)$"] $w3
 assign [instance="^pcmanfm$"] $w4
-assign [class="^Gimp.*|Joplin$"] $w5
+assign [class="^Gimp.*$"] $w5
 assign [class="^vlc$"] $w6
 assign [class="^Tor Browser$"] $w9
 assign [instance="^transmission-gtk$"] $w10
@@ -143,9 +143,8 @@ for_window [class="Spotify"] move to workspace $w6
 for_window [window_role="pop-up"] floating enable
 
 #float, resize and reposition blueman manager window
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Blueman-manager"] resize set 720 560
-for_window [class="Blueman-manager"] move position center
+for_window [instance="blueberry.py"] floating enable
+for_window [instance="blueberry.py"] move position center
 
 #float and reposition network manager connection editor window
 for_window [class="Nm-connection-editor"] floating enable
@@ -169,9 +168,10 @@ for_window [instance="keepassxc"] move position center
 for_window [instance="gnome-system-monitor"] floating enable
 for_window [instance="gnome-system-monitor"] move position center
 
-exec_always --no-startup-id numlockx on
+exec_always --no-startup-id /usr/bin/numlockx on
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id /usr/bin/picom
+exec_always --no-startup-id /usr/bin/xsettingsd
 exec_always dex -a
 
 bar {

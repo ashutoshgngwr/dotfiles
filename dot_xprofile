@@ -3,7 +3,6 @@
 export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 
 # add SSH_AUTH_SOCK to systemd user environment. Required for scripts that use ssh-agent
-# e.g. joplin-to-git-backup script uses 'git push'
 systemctl --user import-environment SSH_AUTH_SOCK
 
 export ANDROID_HOME="$HOME/.android-sdk"

@@ -1,9 +1,0 @@
-[Unit]
-Description=Joplin to Git backup service
-
-[Install]
-WantedBy=multi-user.target
-
-[Service]
-Type=oneshot
-ExecStart=bash %h/.local/bin/joplin-to-git-backup

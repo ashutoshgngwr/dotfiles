@@ -27,7 +27,7 @@ interval = 1
 json = true
 
 {{- $time_short :=  `echo "{\"icon\":\"time\",\"state\":\"Idle\", \"text\": \"$(date +%H:%M)\"}"` }}
-{{- $time_long :=  `echo "{\"icon\":\"time\",\"state\":\"Good\", \"text\": \"$(date +%a\ %d\ %b,\ %H:%M)\"}"` }}
+{{- $time_long :=  `echo "{\"icon\":\"time\",\"state\":\"Good\", \"text\": \"$(date +%a\ %d\ %b\ %Y,\ %H:%M)\"}"` }}
 cycle = ['{{ $time_short }}', '{{ $time_long }}']
 
 [[block]]
@@ -39,7 +39,8 @@ on_click = "xdg-open 'https://github.com/notifications'"
 
 [[block]]
 block = "battery"
-interval = 1
+device = "BAT0"
+interval = 10
 format = "{percentage}"
 full_format = "{percentage}"
 

@@ -1,9 +1,0 @@
-[Unit]
-Description=Joplin to Git backup timer
-
-[Install]
-WantedBy=timers.target
-
-[Timer]
-OnCalendar=*-*-* 00:00:00
-Persistent=true

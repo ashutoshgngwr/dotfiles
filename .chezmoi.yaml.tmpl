@@ -9,7 +9,6 @@
 {{- $iconFont := promptString "icon font" -}}
 {{- $gitEmail := promptString "git author email" -}}
 {{- $gitSigningKey := promptString "git GPG key id" -}}
-{{- $joplinGitRepo := promptString "Joplin backup Git repo" -}}
 
 sourceDir: code/dotfiles
 follow: true
@@ -17,8 +16,6 @@ data:
   git:
     email: {{ $gitEmail }}
     signingkey: {{ $gitSigningKey }}
-  joplin:
-    gitrepo: {{ $joplinGitRepo }}
   theme:
     color: {{ $colorTheme }}
     gtk: {{ $gtkTheme }}
