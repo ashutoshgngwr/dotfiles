@@ -29,8 +29,10 @@ client.urgent           $base08 $base08 $base00 $base08   $base08
 client.placeholder      $base00 $base00 $base05 $base00   $base00
 client.background       $base07
 
+# disable title bar and add 1px border to the windows
 default_border pixel 1
-default_floating_border none
+default_floating_border pixel 1
+for_window [class="^.*"] border pixel 1
 
 set $mod Mod4
 
