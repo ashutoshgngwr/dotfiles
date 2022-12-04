@@ -91,21 +91,22 @@ def main():
         show_desktop_notifications(notifications)
 
     ncount = len(notifications)
+    state = "Idle"
+    if ncount in range(1, 4):
+        state = "Info"
+    elif ncount in range(4, 7):
+        state = "Good"
+    elif ncount in range(7, 10):
+        state = "Warning"
+    elif ncount > 0:
+        state = "Critical"
+
     print(
         json.dumps(
             {
                 "icon": "github",
                 "text": " " + str(ncount),
-                "state": {
-                    0: "Idle",
-                    1: "Idle",
-                    2: "Info",
-                    3: "Info",
-                    4: "Good",
-                    5: "Good",
-                    6: "Warning",
-                    7: "Warning",
-                }.get(ncount, "Critical"),
+                "state": state,
             }
         )
     )
